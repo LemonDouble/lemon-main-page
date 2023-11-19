@@ -22,11 +22,12 @@ export function TabletPage(){
                     <div className="text-2xl">재미있는 걸 만드는걸 좋아해요.</div>
                 </div>
 
-                <div className="mt-12 flex-col space-y-5">
+                <div className="mt-12 flex-col space-y-3">
                     <div className="text-lg">저는 여기서도 만나보실 수 있어요.</div>
                     <SocialContactAddress imageSrc="/image/logo/twitter.webp" imageAlt="트위터 로고" socialId="@_lemon_berry_"  socialHref="https://twitter.com/_lemon_berry_"/>
                     <SocialContactAddress imageSrc="/image/logo/github.webp" imageAlt="깃허브 로고" socialId="@LemonDouble"  socialHref="https://github.com/LemonDouble"/>
                     <SocialContactAddress imageSrc="/image/logo/discord.webp" imageAlt="디스코드 로고" socialId="@lemondouble"  socialHref="https://discord.gg/WzABWpbkNG"/>
+                    <SocialContactAddress imageSrc="/image/logo/blog.webp" imageAlt="블로그 로고" socialId="https://lemondouble.github.io"  socialHref="https://lemondouble.github.io/"/>
                     <SocialContactAddress imageSrc="/image/logo/misskey.webp" imageAlt="미스키 로고" socialId="@lemondouble@sns.lemondouble.com"  socialHref="https://sns.lemondouble.com/@lemondouble"/>
                 </div>
             </div>
