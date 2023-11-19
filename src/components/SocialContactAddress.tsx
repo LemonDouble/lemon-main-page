@@ -10,19 +10,20 @@ interface Props{
 export function SocialContactAddress(props : Props){
 
     return (
-        <div className="flex space-x-2">
-            <Image
-                className="rounded-md"
-                src={props.imageSrc}
-                alt={props.imageAlt}
-                width={25}
-                height={25}
-            />
-            <Link href={props.socialHref} target="_blank">
-                <div className="text-base">
-                    {props.socialId}
-                </div>
-            </Link>
-        </div>
+        <Link href={props.socialHref} target="_blank" className="flex">
+            <div className="flex space-x-2">
+                <Image
+                    className="rounded-md"
+                    src={props.imageSrc}
+                    alt={props.imageAlt}
+                    width={25}
+                    height={25}
+                />
+                    <div className="text-base">
+                        {props.socialId}
+                    </div>
+            </div>
+        </Link>
+
     )
 }
