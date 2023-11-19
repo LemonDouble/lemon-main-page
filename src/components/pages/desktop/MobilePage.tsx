@@ -43,7 +43,7 @@ export function MobilePage(){
             <div className="h-[350px]" />
 
             <Image
-                className="fixed -bottom-[10%]"
+                className="fixed -bottom-[10%] left-1/2 transform -translate-x-1/2"
                 src="/image/character/lemon-character.webp"
                 alt="캐릭터 이미지"
                 width={580} height={580}

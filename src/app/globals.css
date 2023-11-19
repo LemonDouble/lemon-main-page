@@ -21,13 +21,13 @@ html,body{
     background: linear-gradient(to top, #FFF9C3 50%, transparent 50%);
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 320px) and (max-width: 768px) {
     .mobile-page{
         display: block;
     }
 }
 
-@media (min-width: 481px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .tablet-page{
         display: block;
     }
