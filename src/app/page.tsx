@@ -1,12 +1,20 @@
+"use client"
 import Image from "next/image";
 import {SocialContactAddress} from "@/components/SocialContactAddress";
+import {Typewriter} from "react-simple-typewriter";
 
 export default function Home() {
   return (
     <main className="w-screen min-h-screen h-auto absolute overflow-clip">
         <div className="ml-16 relative">
             <div className="mt-72">
-                <div className="text-4xl font-normal">안녕하세요! 제 이름은...</div>
+                <div className="text-4xl font-normal">
+                    <Typewriter
+                        words={["안녕하세요! 제 이름은...", "Hello! my name is...", "こんにちは！私の名前は..."]}
+                        loop={0}
+                        cursor={true}
+                    />
+                </div>
                 <div><span className="text-7xl font-semibold highlighter-yellow">LemonDouble</span></div>
             </div>
 
