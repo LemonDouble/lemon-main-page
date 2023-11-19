@@ -20,3 +20,21 @@ html,body{
 .highlighter-yellow{
     background: linear-gradient(to top, #FFF9C3 50%, transparent 50%);
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .mobile-page{
+        display: block;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+    .tablet-page{
+        display: block;
+    }
+}
+
+@media (min-width: 1025px){
+    .desktop-page{
+        display: block;
+    }
+}

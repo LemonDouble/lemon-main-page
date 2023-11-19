@@ -6,7 +6,7 @@ import {Typewriter} from "react-simple-typewriter";
 export function MobilePage(){
 
     return(
-        <main className="w-screen min-h-screen absolute overflow-clip text-center content-center">
+        <main className="mobile-page hidden w-screen min-h-screen absolute overflow-clip text-center content-center">
             <div className="mt-11 relative">
                 <div className="text-2xl">
                     <Typewriter

@@ -3,9 +3,9 @@ import {Typewriter} from "react-simple-typewriter";
 import {SocialContactAddress} from "@/components/SocialContactAddress";
 import Image from "next/image";
 
-export function MainDesktopPage(){
+export function DesktopPage(){
     return (
-        <main className="w-screen min-h-screen h-auto absolute overflow-clip">
+        <main className="desktop-page hidden w-screen min-h-screen h-auto absolute overflow-clip">
             <div className="ml-16 relative">
                 <div className="mt-72">
                     <div className="text-4xl font-normal">
