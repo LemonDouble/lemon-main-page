@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import React from "react";
 
 export const metadata: Metadata = {
   title: '레몬더블 / lemondouble.com',
@@ -15,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   )
 }
