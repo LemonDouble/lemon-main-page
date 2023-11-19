@@ -6,7 +6,7 @@ import {Typewriter} from "react-simple-typewriter";
 export function MobilePage(){
 
     return(
-        <main className="w-screen h-screen absolute overflow-clip text-center content-center">
+        <main className="w-screen min-h-screen absolute overflow-clip text-center content-center">
             <div className="mt-11 relative">
                 <div className="text-2xl">
                     <Typewriter
@@ -22,14 +22,14 @@ export function MobilePage(){
                 </div>
             </div>
 
-            <div className="mt-14">
+            <div className="mt-8">
                 <div className="text-2xl">
                     <div>소프트웨어 엔지니어로서,</div>
                     <div>재밌는 걸 만드는걸 좋아해요.</div>
                 </div>
             </div>
 
-            <div className="mt-14 flex flex-col items-center space-y-5">
+            <div className="mt-8 flex flex-col items-center space-y-5">
                 <div className="text-lg">
                     저는 여기서도 만나보실 수 있어요.
                 </div>
@@ -40,8 +40,10 @@ export function MobilePage(){
 
             </div>
 
+            <div className="h-[350px]" />
+
             <Image
-                className="-bottom-[5rem] absolute"
+                className="fixed -bottom-[10%]"
                 src="/image/character/lemon-character.png"
                 alt="캐릭터 이미지"
                 width={580} height={580}
