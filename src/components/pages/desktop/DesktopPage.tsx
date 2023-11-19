@@ -38,6 +38,7 @@ export function DesktopPage(){
                 src="/image/character/lemon-character.webp"
                 alt="캐릭터 이미지"
                 width={768} height={768}
+                loading="eager"
             />
         </main>
     )

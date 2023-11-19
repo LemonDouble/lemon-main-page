@@ -47,6 +47,7 @@ export function MobilePage(){
                 src="/image/character/lemon-character.webp"
                 alt="캐릭터 이미지"
                 width={580} height={580}
+                loading="eager"
             />
         </main>
     )
