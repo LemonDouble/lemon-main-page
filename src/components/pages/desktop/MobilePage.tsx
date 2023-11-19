@@ -33,10 +33,10 @@ export function MobilePage(){
                 <div className="text-lg">
                     저는 여기서도 만나보실 수 있어요.
                 </div>
-                <SocialContactAddress imageSrc="/image/logo/twitter.png" imageAlt="트위터 로고" socialId="@_lemon_berry_"  socialHref="https://twitter.com/_lemon_berry_"/>
+                <SocialContactAddress imageSrc="/image/logo/twitter.webp" imageAlt="트위터 로고" socialId="@_lemon_berry_"  socialHref="https://twitter.com/_lemon_berry_"/>
                 <SocialContactAddress imageSrc="/image/logo/github.webp" imageAlt="깃허브 로고" socialId="@LemonDouble"  socialHref="https://github.com/LemonDouble"/>
-                <SocialContactAddress imageSrc="/image/logo/discord.png" imageAlt="디스코드 로고" socialId="@lemondouble"  socialHref="https://discord.gg/WzABWpbkNG"/>
-                <SocialContactAddress imageSrc="/image/logo/misskey.png" imageAlt="미스키 로고" socialId="@lemondouble@sns.lemondouble.com"  socialHref="https://sns.lemondouble.com/@lemondouble"/>
+                <SocialContactAddress imageSrc="/image/logo/discord.webp" imageAlt="디스코드 로고" socialId="@lemondouble"  socialHref="https://discord.gg/WzABWpbkNG"/>
+                <SocialContactAddress imageSrc="/image/logo/misskey.webp" imageAlt="미스키 로고" socialId="@lemondouble@sns.lemondouble.com"  socialHref="https://sns.lemondouble.com/@lemondouble"/>
 
             </div>
 
@@ -44,7 +44,7 @@ export function MobilePage(){
 
             <Image
                 className="fixed -bottom-[10%]"
-                src="/image/character/lemon-character.png"
+                src="/image/character/lemon-character.webp"
                 alt="캐릭터 이미지"
                 width={580} height={580}
             />
