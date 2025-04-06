@@ -4,6 +4,9 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: '레몬더블 / lemondouble.com',
+  icons: {
+    icon: 'https://cdn.lemondouble.com/homepage/favicon.ico',
+  }
 }
 
 export default function RootLayout({
