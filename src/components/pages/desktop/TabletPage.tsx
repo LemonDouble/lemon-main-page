@@ -52,10 +52,10 @@ export function TabletPage() {
                 <div className="w-[55rem] h-[55rem] bg-gradient-to-br from-yellow-200/50 via-yellow-100/30 to-orange-100/20 rounded-full blur-sm" />
             </div>
             <Image
-                className="w-[38rem] h-[38rem] -right-16 -bottom-16 absolute animate-float drop-shadow-xl"
+                className="w-auto h-[38rem] -right-16 -bottom-16 absolute animate-float drop-shadow-xl object-contain"
                 src="/image/character/lemon-character.webp"
                 alt="캐릭터 이미지"
-                width={608} height={608}
+                width={1235} height={1415}
                 loading="eager"
                 priority
             />

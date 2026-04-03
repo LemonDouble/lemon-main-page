@@ -53,10 +53,10 @@ export function DesktopPage() {
                 <div className="w-[65rem] h-[65rem] bg-gradient-to-br from-yellow-200/60 via-yellow-100/40 to-orange-100/30 rounded-full blur-sm" />
             </div>
             <Image
-                className="w-[50rem] h-[50rem] right-0 -bottom-10 absolute animate-float drop-shadow-2xl"
+                className="w-auto h-[50rem] right-0 -bottom-10 absolute animate-float drop-shadow-2xl object-contain"
                 src="/image/character/lemon-character.webp"
                 alt="캐릭터 이미지"
-                width={800} height={800}
+                width={1235} height={1415}
                 loading="eager"
                 priority
             />
