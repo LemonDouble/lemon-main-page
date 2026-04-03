@@ -13,22 +13,22 @@ export function SocialContactAddress(props: Props) {
         <Link
             href={props.socialHref}
             target="_blank"
-            className="social-link flex items-center space-x-3 px-4 py-3 rounded-xl bg-white/50 hover:bg-white/80 backdrop-blur-sm border border-white/60 shadow-sm hover:shadow-md transition-all duration-300 group"
+            className="social-link flex items-center space-x-3 px-4 py-3 bg-[var(--bg-card)] border-2 border-[var(--border-dim)] hover:border-[var(--accent)] hover:bg-[var(--bg-card-hover)] transition-all duration-200 group"
         >
             <div className="flex-shrink-0 w-8 h-8 relative">
                 <Image
-                    className="rounded-lg shadow-sm group-hover:scale-110 transition-transform duration-300"
+                    className="group-hover:scale-110 transition-transform duration-200 brightness-110"
                     src={props.imageSrc}
                     alt={props.imageAlt}
                     width={32}
                     height={32}
                 />
             </div>
-            <span className="text-base font-medium text-gray-700 group-hover:text-yellow-600 transition-colors duration-300">
+            <span className="text-base font-medium text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors duration-200 pixel-text">
                 {props.socialId}
             </span>
             <svg
-                className="w-4 h-4 text-gray-400 group-hover:text-yellow-500 group-hover:translate-x-1 transition-all duration-300 ml-auto"
+                className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-secondary)] group-hover:translate-x-1 transition-all duration-200 ml-auto"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

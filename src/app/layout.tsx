@@ -6,7 +6,8 @@ export const metadata: Metadata = {
   title: '레몬더블 / lemondouble.com',
   icons: {
     icon: 'https://cdn.lemondouble.com/homepage/favicon.ico',
-  }
+  },
+  themeColor: '#0a0a1a',
 }
 
 export default function RootLayout({
@@ -16,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        {children}
+        <div className="scanlines" aria-hidden="true" />
+      </body>
     </html>
   )
 }
