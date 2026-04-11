@@ -6,7 +6,7 @@ import {ProjectsSection, Project} from "@/components/ProjectsSection";
 async function getProjects(): Promise<Project[]> {
     try {
         const res = await fetch('https://blog.lemondouble.com/projects/index.json', {
-            next: { revalidate: 3600 }
+            cache: 'no-store'
         });
         if (!res.ok) return [];
         return res.json();
