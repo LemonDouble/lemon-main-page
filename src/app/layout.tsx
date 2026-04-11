@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   icons: {
     icon: 'https://cdn.lemondouble.com/homepage/favicon.ico',
   },
-  themeColor: '#0a0a1a',
+  themeColor: '#12100E',
 }
 
 export default function RootLayout({
@@ -19,7 +19,6 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         {children}
-        <div className="scanlines" aria-hidden="true" />
       </body>
     </html>
   )
