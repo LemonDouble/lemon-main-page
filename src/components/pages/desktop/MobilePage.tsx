@@ -8,7 +8,7 @@ import { NotebookPen } from "lucide-react";
 
 export function MobilePage() {
     return (
-        <main className="mobile-page hidden w-screen min-h-screen absolute overflow-x-clip">
+        <section className="mobile-page hidden w-full min-h-screen relative overflow-x-clip">
             <div className="relative z-10 px-6 pt-16 pb-8 text-center">
                 <div className="animate-fade-in-up">
                     <div className="text-lg font-light tracking-wide" style={{ color: 'var(--text-secondary)' }}>
@@ -60,6 +60,6 @@ export function MobilePage() {
                     />
                 </div>
             </div>
-        </main>
+        </section>
     )
 }

@@ -8,7 +8,7 @@ import { NotebookPen } from "lucide-react";
 
 export function TabletPage() {
     return (
-        <main className="tablet-page hidden w-screen min-h-screen h-auto absolute overflow-clip">
+        <section className="tablet-page hidden w-full min-h-screen relative overflow-clip">
             <div className="ml-12 relative z-10">
                 <div className="mt-16 animate-fade-in-up">
                     <div className="text-2xl font-light tracking-wide" style={{ color: 'var(--text-secondary)' }}>
@@ -59,6 +59,6 @@ export function TabletPage() {
                     />
                 </div>
             </div>
-        </main>
+        </section>
     )
 }

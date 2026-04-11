@@ -8,7 +8,7 @@ import { NotebookPen } from "lucide-react";
 
 export function DesktopPage() {
     return (
-        <main className="desktop-page hidden w-screen h-screen fixed inset-0 overflow-hidden">
+        <section className="desktop-page hidden w-full h-screen relative overflow-hidden">
             <div className="ml-20 relative z-10 h-full flex flex-col justify-center">
                 <div className="animate-fade-in-up">
                     <div className="text-3xl font-light tracking-wide" style={{ color: 'var(--text-secondary)' }}>
@@ -59,6 +59,6 @@ export function DesktopPage() {
                     />
                 </div>
             </div>
-        </main>
+        </section>
     )
 }

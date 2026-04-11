@@ -1,16 +1,29 @@
-"use client"
 import {DesktopPage} from "@/components/pages/desktop/DesktopPage";
 import {MobilePage} from "@/components/pages/desktop/MobilePage";
 import {TabletPage} from "@/components/pages/desktop/TabletPage";
+import {ProjectsSection, Project} from "@/components/ProjectsSection";
 
-export default function Home() {
+async function getProjects(): Promise<Project[]> {
+    try {
+        const res = await fetch('https://blog.lemondouble.com/projects/index.json', {
+            next: { revalidate: 3600 }
+        });
+        if (!res.ok) return [];
+        return res.json();
+    } catch {
+        return [];
+    }
+}
 
-    // 셋 다 일단 올린 후, CSS로 hidden 처리
+export default async function Home() {
+    const projects = await getProjects();
+
     return(
         <>
             <MobilePage />
             <TabletPage />
             <DesktopPage />
+            <ProjectsSection projects={projects} />
         </>
     )
 }

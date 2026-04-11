@@ -28,14 +28,13 @@
 }
 
 html, body {
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
-    height: auto;
-    position: absolute;
     margin: 0;
     padding: 0;
     background: var(--bg-dark);
     color: var(--text-primary);
+    overflow-x: hidden;
 }
 
 ::selection {
@@ -139,6 +138,71 @@ html, body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
+}
+
+/* ===== Project Card ===== */
+
+.project-card:hover {
+    border-color: var(--primary) !important;
+    background: var(--surface-hover);
+}
+
+.project-card:hover h4 {
+    color: var(--primary);
+}
+
+.description-expand {
+    display: grid;
+    transition: grid-template-rows 0.2s ease;
+}
+
+.project-description strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.project-description code {
+    background: var(--bg-dark);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: var(--primary);
+}
+
+.project-description ul, .project-description ol {
+    padding-left: 1.4em;
+    margin: 6px 0;
+    list-style: disc !important;
+}
+
+.project-description ol {
+    list-style: decimal !important;
+}
+
+.project-description li {
+    margin: 4px 0;
+}
+
+.project-description li::marker {
+    color: var(--text-muted);
+}
+
+.project-description h4 {
+    font-family: 'Galmuri11', monospace;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    margin-top: 12px;
+    margin-bottom: 6px;
+}
+
+.project-description p {
+    margin: 6px 0;
+}
+
+.project-description p:first-child {
+    margin-top: 0;
 }
 
 /* ===== Reduced Motion ===== */
