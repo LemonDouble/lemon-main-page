@@ -2,7 +2,8 @@
 import { Typewriter } from "react-simple-typewriter";
 import { SocialContactAddress } from "@/components/SocialContactAddress";
 import Image from "next/image";
-import { SiX, SiGithub, SiDiscord } from "@icons-pack/react-simple-icons";
+import { SiGithub, SiDiscord } from "@icons-pack/react-simple-icons";
+import { TwitterBird } from "@/components/icons/TwitterBird";
 import { NotebookPen } from "lucide-react";
 
 export function TabletPage() {
@@ -37,7 +38,7 @@ export function TabletPage() {
                         Connect with me
                     </div>
                     <div className="flex flex-col space-y-2.5 max-w-xs">
-                        <SocialContactAddress icon={<SiX size={20} />} socialId="@_lemon_berry_" socialHref="https://twitter.com/_lemon_berry_" />
+                        <SocialContactAddress icon={<TwitterBird size={20} />} socialId="@_lemon_berry_" socialHref="https://twitter.com/_lemon_berry_" />
                         <SocialContactAddress icon={<SiGithub size={20} />} socialId="@LemonDouble" socialHref="https://github.com/LemonDouble" />
                         <SocialContactAddress icon={<SiDiscord size={20} />} socialId="@lemondouble" socialHref="https://discord.gg/WzABWpbkNG" />
                         <SocialContactAddress icon={<NotebookPen size={20} strokeWidth={2} />} socialId="blog.lemondouble.com" socialHref="https://blog.lemondouble.com" />
