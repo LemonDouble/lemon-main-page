@@ -1,13 +1,13 @@
 import {DesktopPage} from "@/components/pages/desktop/DesktopPage";
 import {MobilePage} from "@/components/pages/desktop/MobilePage";
 import {TabletPage} from "@/components/pages/desktop/TabletPage";
-import {ProjectsSection, Project} from "@/components/ProjectsSection";
+import {PortfolioTabs} from "@/components/PortfolioTabs";
+import {Project} from "@/components/ProjectsSection";
+import {Skill} from "@/components/SkillsSection";
 
-async function getProjects(): Promise<Project[]> {
+async function fetchJson<T>(url: string): Promise<T[]> {
     try {
-        const res = await fetch('https://blog.lemondouble.com/projects/index.json', {
-            cache: 'no-store'
-        });
+        const res = await fetch(url, { cache: 'no-store' });
         if (!res.ok) return [];
         return res.json();
     } catch {
@@ -16,14 +16,17 @@ async function getProjects(): Promise<Project[]> {
 }
 
 export default async function Home() {
-    const projects = await getProjects();
+    const [projects, skills] = await Promise.all([
+        fetchJson<Project>('https://blog.lemondouble.com/projects/index.json'),
+        fetchJson<Skill>('https://blog.lemondouble.com/skills/index.json'),
+    ]);
 
     return(
         <>
             <MobilePage />
             <TabletPage />
             <DesktopPage />
-            <ProjectsSection projects={projects} />
+            <PortfolioTabs projects={projects} skills={skills} />
         </>
     )
 }

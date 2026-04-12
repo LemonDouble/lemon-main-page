@@ -131,33 +131,31 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
     const years = Object.keys(grouped).map(Number).sort((a, b) => b - a);
 
     return (
-        <section className="py-20 px-6 md:px-12 xl:px-20">
-            <div className="max-w-6xl mx-auto">
-                <div className="section-label mb-2">Projects</div>
-                <p className="text-sm mb-12" style={{ color: "var(--text-secondary)" }}>
-                    여태까지 만들었던 프로젝트들이에요.{" "}
-                    <Link
-                        href="https://blog.lemondouble.com/projects/"
-                        target="_blank"
-                        className="underline hover:text-[var(--primary)] transition-colors"
-                    >
-                        자세히 보기 →
-                    </Link>
-                </p>
+        <div className="max-w-6xl mx-auto">
+            <div className="section-label mb-2">Projects</div>
+            <p className="text-sm mb-8" style={{ color: "var(--text-secondary)" }}>
+                여태까지 만들었던 프로젝트들이에요.{" "}
+                <Link
+                    href="https://blog.lemondouble.com/projects/"
+                    target="_blank"
+                    className="underline hover:text-[var(--primary)] transition-colors"
+                >
+                    자세히 보기 →
+                </Link>
+            </p>
 
-                {years.map(year => (
-                    <div key={year} className="mb-12 last:mb-0">
-                        <h3 className="text-xl galmuri mb-4" style={{ color: "var(--primary)" }}>
-                            {year}
-                        </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-                            {grouped[year].map(project => (
-                                <ProjectCard key={project.slug} project={project} />
-                            ))}
-                        </div>
+            {years.map(year => (
+                <div key={year} className="mb-12 last:mb-0">
+                    <h3 className="text-xl galmuri mb-4" style={{ color: "var(--primary)" }}>
+                        {year}
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+                        {grouped[year].map(project => (
+                            <ProjectCard key={project.slug} project={project} />
+                        ))}
                     </div>
-                ))}
-            </div>
-        </section>
+                </div>
+            ))}
+        </div>
     );
 }

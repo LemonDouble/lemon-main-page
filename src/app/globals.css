@@ -205,6 +205,211 @@ html, body {
     margin-top: 0;
 }
 
+/* ===== Portfolio Tabs ===== */
+
+.portfolio-tabs {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.portfolio-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    background: transparent;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.portfolio-tab:hover {
+    color: var(--text-primary);
+    background: var(--surface-hover);
+}
+
+.portfolio-tab.active {
+    color: var(--bg-dark);
+    background: var(--primary);
+}
+
+.portfolio-tab-count {
+    font-family: "Pretendard Variable", Pretendard, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.15);
+    color: inherit;
+    opacity: 0.8;
+}
+
+.portfolio-tab:not(.active) .portfolio-tab-count {
+    background: var(--bg-dark);
+}
+
+/* ===== Skills Table ===== */
+
+.skills-table-wrapper {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+}
+
+.skills-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.skills-table .col-category {
+    width: 110px;
+}
+
+.skills-table .col-level {
+    width: calc((100% - 110px) / 3);
+}
+
+.skills-table th {
+    font-family: 'Galmuri11', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--primary);
+    background: var(--primary-dim);
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--primary-dim-border);
+    border-right: 1px solid var(--border);
+}
+
+.skills-table th:last-child {
+    border-right: none;
+}
+
+.skills-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    vertical-align: top;
+}
+
+.skills-table td:last-child {
+    border-right: none;
+}
+
+.skills-table tr:last-child td {
+    border-bottom: none;
+}
+
+.skill-category-name {
+    font-family: 'Galmuri11', monospace;
+    font-size: 13px;
+    color: var(--primary);
+    white-space: pre-line;
+}
+
+.skill-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.skill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px 5px 7px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: color-mix(in srgb, var(--badge-color) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--badge-color) 30%, transparent);
+    line-height: 1;
+    white-space: nowrap;
+    min-width: 72px;
+    transition: all 0.15s ease;
+}
+
+.skill-badge:hover {
+    background: color-mix(in srgb, var(--badge-color) 25%, transparent);
+    border-color: color-mix(in srgb, var(--badge-color) 50%, transparent);
+}
+
+.skill-badge img {
+    display: block;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 0.5px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 0.5px rgba(255, 255, 255, 0.4));
+}
+
+@media (max-width: 768px) {
+    .skills-table-wrapper {
+        padding: 16px;
+    }
+
+    .skills-table thead {
+        display: none;
+    }
+
+    .skills-table,
+    .skills-table tbody,
+    .skills-table tr,
+    .skills-table td {
+        display: block;
+    }
+
+    .skills-table tr {
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 16px;
+    }
+
+    .skills-table tr:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .skills-table td {
+        border-right: none;
+        border-bottom: none;
+        padding: 6px 0;
+    }
+
+    .skill-category-name {
+        font-size: 15px;
+        margin-bottom: 8px;
+        padding-top: 0;
+    }
+
+    .skills-table td[data-level]::before {
+        content: attr(data-level);
+        font-family: 'Galmuri11', monospace;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--primary);
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .skills-table td[data-level]:not(:has(.skill-badge)) {
+        display: none;
+    }
+}
+
 /* ===== Reduced Motion ===== */
 
 @media (prefers-reduced-motion: reduce) {
