@@ -25,6 +25,7 @@ const statusStyles: Record<string, { color: string; bg: string; border: string }
     "개발중": { color: "var(--primary)", bg: "var(--primary-dim)", border: "rgba(240, 185, 11, 0.25)" },
     "완료": { color: "var(--success)", bg: "rgba(74, 222, 128, 0.12)", border: "rgba(74, 222, 128, 0.25)" },
     "완료 (개인용)": { color: "var(--success)", bg: "rgba(74, 222, 128, 0.12)", border: "rgba(74, 222, 128, 0.25)" },
+    "완료 (고도화 중)": { color: "var(--success)", bg: "rgba(74, 222, 128, 0.12)", border: "rgba(74, 222, 128, 0.25)" },
     "운영중": { color: "var(--secondary)", bg: "var(--secondary-dim)", border: "rgba(205, 107, 94, 0.25)" },
     "archived": { color: "var(--text-muted)", bg: "rgba(92, 82, 74, 0.2)", border: "rgba(92, 82, 74, 0.4)" },
     "드랍": { color: "var(--error)", bg: "rgba(239, 68, 68, 0.12)", border: "rgba(239, 68, 68, 0.25)" },
