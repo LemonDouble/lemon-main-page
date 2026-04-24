@@ -118,9 +118,9 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 >
                     &times;
                 </button>
-                <div className="px-8 pb-8">
+                <div className="p-8">
                     {project.image && (
-                        <div className="-mx-8 -mt-10 mb-6 border-b border-[var(--border)] overflow-hidden">
+                        <div className="-mx-8 -mt-8 mb-6 border-b border-[var(--border)] overflow-hidden">
                             <img
                                 src={`https://blog.lemondouble.com/images/projects/${project.image}`}
                                 alt=""
