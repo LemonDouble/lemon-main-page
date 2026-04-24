@@ -143,17 +143,8 @@ html, body {
 /* ===== Project Card ===== */
 
 .project-card:hover {
-    border-color: var(--primary) !important;
+    border-color: var(--border-hover) !important;
     background: var(--surface-hover);
-}
-
-.project-card:hover h4 {
-    color: var(--primary);
-}
-
-.description-expand {
-    display: grid;
-    transition: grid-template-rows 0.2s ease;
 }
 
 .project-description strong {
@@ -162,11 +153,11 @@ html, body {
 }
 
 .project-description code {
-    background: var(--bg-dark);
-    padding: 1px 5px;
-    border-radius: 3px;
+    background: var(--surface-hover);
+    padding: 1px 6px;
+    border-radius: 4px;
     font-size: 0.9em;
-    color: var(--primary);
+    border: 1px solid var(--border);
 }
 
 .project-description ul, .project-description ol {
@@ -189,20 +180,23 @@ html, body {
 
 .project-description h4 {
     font-family: 'Galmuri11', monospace;
-    color: var(--primary);
+    color: var(--text-primary);
     font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    margin-top: 12px;
-    margin-bottom: 6px;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 8px;
 }
 
 .project-description p {
-    margin: 6px 0;
+    margin: 12px 0;
 }
 
 .project-description p:first-child {
     margin-top: 0;
+}
+
+.project-description p:last-child {
+    margin-bottom: 0;
 }
 
 /* ===== Portfolio Tabs ===== */
