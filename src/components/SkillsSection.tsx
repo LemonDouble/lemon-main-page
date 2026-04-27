@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Dictionary } from "@/lib/i18n";
 
 export interface Skill {
     category: string;
@@ -13,12 +14,6 @@ export interface Skill {
     custom_logo?: string;
     note?: string;
 }
-
-const LEVEL_LABELS: Record<Skill["level"], string> = {
-    primary: "🔥 주력",
-    secondary: "🛠️ 가끔씩 써요",
-    familiar: "📚 할 줄은 알아요",
-};
 
 const LEVELS: Skill["level"][] = ["primary", "secondary", "familiar"];
 
@@ -40,8 +35,10 @@ function SkillBadge({ skill }: { skill: Skill }) {
     );
 }
 
-export function SkillsSection({ skills }: { skills: Skill[] }) {
+export function SkillsSection({ skills, dict, blogSkillsUrl }: { skills: Skill[]; dict: Dictionary; blogSkillsUrl: string }) {
     if (skills.length === 0) return null;
+
+    const levelLabels = dict.skills.level;
 
     const categoryMap = new Map<
         string,
@@ -68,13 +65,13 @@ export function SkillsSection({ skills }: { skills: Skill[] }) {
         <div className="max-w-6xl mx-auto">
             <div className="section-label mb-2">Skills</div>
             <p className="text-sm mb-8" style={{ color: "var(--text-secondary)" }}>
-                이런 기술들을 사용해서 이런저런 걸 만들고 있어요.{" "}
+                {dict.skills.intro}{" "}
                 <Link
-                    href="https://blog.lemondouble.com/skills/"
+                    href={blogSkillsUrl}
                     target="_blank"
                     className="underline hover:text-[var(--primary)] transition-colors"
                 >
-                    자세히 보기 →
+                    {dict.skills.viewMore}
                 </Link>
             </p>
 
@@ -90,7 +87,7 @@ export function SkillsSection({ skills }: { skills: Skill[] }) {
                         <tr>
                             <th></th>
                             {LEVELS.map(level => (
-                                <th key={level}>{LEVEL_LABELS[level]}</th>
+                                <th key={level}>{levelLabels[level]}</th>
                             ))}
                         </tr>
                     </thead>
@@ -101,7 +98,7 @@ export function SkillsSection({ skills }: { skills: Skill[] }) {
                                     <strong>{category.name}</strong>
                                 </td>
                                 {LEVELS.map(level => (
-                                    <td key={level} data-level={LEVEL_LABELS[level]}>
+                                    <td key={level} data-level={levelLabels[level]}>
                                         <div className="skill-badges">
                                             {category.byLevel[level].map(skill => (
                                                 <SkillBadge key={skill.slug} skill={skill} />

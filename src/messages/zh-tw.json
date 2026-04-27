@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "title": "LemonDouble / lemondouble.com",
+    "description": "LemonDouble 的作品集 / 主頁"
+  },
+  "hero": {
+    "intro": [
+      "안녕하세요! 제 이름은...",
+      "Hello! my name is...",
+      "こんにちは！私の名前は...",
+      "你好！我的名字是...",
+      "你好！我的名字是..."
+    ],
+    "tagline": "我喜歡做一些有趣的東西。",
+    "characterAlt": "角色圖像"
+  },
+  "portfolio": {
+    "tabProjects": "Projects",
+    "tabSkills": "Skills"
+  },
+  "projects": {
+    "intro": "至今為止做過的專案。",
+    "viewMore": "查看詳情 →",
+    "private": "私有"
+  },
+  "skills": {
+    "intro": "用這些技術做著各種各樣的東西。",
+    "viewMore": "查看詳情 →",
+    "level": {
+      "primary": "🔥 主力",
+      "secondary": "🛠️ 偶爾使用",
+      "familiar": "📚 略懂"
+    }
+  },
+  "status": {
+    "개발중": "開發中",
+    "완료": "已完成",
+    "완료 (개인용)": "已完成 (個人)",
+    "완료 (고도화 중)": "已完成 (持續優化)",
+    "운영중": "營運中",
+    "archived": "archived",
+    "드랍": "已棄用"
+  },
+  "languageSwitcher": {
+    "label": "選擇語言"
+  }
+}

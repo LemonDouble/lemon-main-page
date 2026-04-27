@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "title": "레몬더블 / lemondouble.com",
+    "description": "레몬더블의 포트폴리오 / 메인 페이지"
+  },
+  "hero": {
+    "intro": [
+      "안녕하세요! 제 이름은...",
+      "Hello! my name is...",
+      "こんにちは！私の名前は...",
+      "你好！我的名字是...",
+      "你好！我的名字是..."
+    ],
+    "tagline": "재밌는 걸 만드는걸 좋아해요.",
+    "characterAlt": "캐릭터 이미지"
+  },
+  "portfolio": {
+    "tabProjects": "Projects",
+    "tabSkills": "Skills"
+  },
+  "projects": {
+    "intro": "여태까지 만들었던 프로젝트들이에요.",
+    "viewMore": "자세히 보기 →",
+    "private": "비공개"
+  },
+  "skills": {
+    "intro": "이런 기술들을 사용해서 이런저런 걸 만들고 있어요.",
+    "viewMore": "자세히 보기 →",
+    "level": {
+      "primary": "🔥 주력",
+      "secondary": "🛠️ 가끔씩 써요",
+      "familiar": "📚 할 줄은 알아요"
+    }
+  },
+  "status": {
+    "개발중": "개발중",
+    "완료": "완료",
+    "완료 (개인용)": "완료 (개인용)",
+    "완료 (고도화 중)": "완료 (고도화 중)",
+    "운영중": "운영중",
+    "archived": "archived",
+    "드랍": "드랍"
+  },
+  "languageSwitcher": {
+    "label": "언어 선택"
+  }
+}

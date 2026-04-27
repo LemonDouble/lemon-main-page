@@ -1,32 +1,32 @@
-import {DesktopPage} from "@/components/pages/desktop/DesktopPage";
-import {MobilePage} from "@/components/pages/desktop/MobilePage";
-import {TabletPage} from "@/components/pages/desktop/TabletPage";
-import {PortfolioTabs} from "@/components/PortfolioTabs";
-import {Project} from "@/components/ProjectsSection";
-import {Skill} from "@/components/SkillsSection";
+import type { Metadata } from "next";
+import { HomePage } from "@/components/HomePage";
+import {
+    DEFAULT_LOCALE,
+    getAlternates,
+    getDictionary,
+    getOpenGraphLocales,
+    getLocaleUrl,
+} from "@/lib/i18n";
 
-async function fetchJson<T>(url: string): Promise<T[]> {
-    try {
-        const res = await fetch(url, { cache: 'no-store' });
-        if (!res.ok) return [];
-        return res.json();
-    } catch {
-        return [];
-    }
+export async function generateMetadata(): Promise<Metadata> {
+    const locale = DEFAULT_LOCALE;
+    const dict = getDictionary(locale);
+    const og = getOpenGraphLocales(locale);
+    return {
+        title: dict.metadata.title,
+        description: dict.metadata.description,
+        alternates: getAlternates(locale),
+        openGraph: {
+            title: dict.metadata.title,
+            description: dict.metadata.description,
+            url: getLocaleUrl(locale),
+            locale: og.locale,
+            alternateLocale: og.alternateLocale,
+            type: "website",
+        },
+    };
 }
 
 export default async function Home() {
-    const [projects, skills] = await Promise.all([
-        fetchJson<Project>('https://blog.lemondouble.com/projects/index.json'),
-        fetchJson<Skill>('https://blog.lemondouble.com/skills/index.json'),
-    ]);
-
-    return(
-        <>
-            <MobilePage />
-            <TabletPage />
-            <DesktopPage />
-            <PortfolioTabs projects={projects} skills={skills} />
-        </>
-    )
+    return <HomePage locale={DEFAULT_LOCALE} />;
 }

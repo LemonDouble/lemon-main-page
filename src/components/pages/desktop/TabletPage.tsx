@@ -5,15 +5,16 @@ import Image from "next/image";
 import { SiGithub, SiDiscord } from "@icons-pack/react-simple-icons";
 import { TwitterBird } from "@/components/icons/TwitterBird";
 import { NotebookPen } from "lucide-react";
+import type { Dictionary } from "@/lib/i18n";
 
-export function TabletPage() {
+export function TabletPage({ dict }: { dict: Dictionary }) {
     return (
         <section className="tablet-page hidden w-full min-h-screen relative overflow-clip">
             <div className="ml-12 relative z-10">
                 <div className="mt-16 animate-fade-in-up">
                     <div className="text-2xl font-light tracking-wide" style={{ color: 'var(--text-secondary)' }}>
                         <Typewriter
-                            words={["안녕하세요! 제 이름은...", "Hello! my name is...", "こんにちは！私の名前は..."]}
+                            words={dict.hero.intro}
                             loop={0}
                             cursor={true}
                             cursorStyle="_"
@@ -29,7 +30,7 @@ export function TabletPage() {
                 <div className="mt-10 animate-fade-in-up-delay-1">
                     <div className="text-lg mb-1 galmuri" style={{ color: 'var(--secondary)' }}>Software Engineer</div>
                     <div className="text-xl font-light leading-relaxed" style={{ color: 'var(--text-primary)' }}>
-                        재미있는 걸 만드는걸 좋아해요.
+                        {dict.hero.tagline}
                     </div>
                 </div>
 
@@ -52,7 +53,7 @@ export function TabletPage() {
                     <Image
                         className="w-auto h-[38rem] object-contain drop-shadow-[0_0_30px_rgba(240,185,11,0.12)]"
                         src="/image/character/lemon-character.webp"
-                        alt="캐릭터 이미지"
+                        alt={dict.hero.characterAlt}
                         width={1235} height={1415}
                         loading="eager"
                         priority

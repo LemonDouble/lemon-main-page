@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import { SiGithub } from "@icons-pack/react-simple-icons";
+import type { Dictionary } from "@/lib/i18n";
 
 export interface Project {
     name: string;
@@ -24,14 +25,16 @@ const statusStyles: Record<string, { color: string; bg: string }> = {
     "개발중": { color: "var(--primary)", bg: "var(--primary-dim)" },
     "완료": { color: "var(--success)", bg: "rgba(74, 222, 128, 0.12)" },
     "완료 (개인용)": { color: "var(--success)", bg: "rgba(74, 222, 128, 0.12)" },
+    "완료 (고도화 중)": { color: "var(--success)", bg: "rgba(74, 222, 128, 0.12)" },
     "운영중": { color: "var(--secondary)", bg: "var(--secondary-dim)" },
     "archived": { color: "var(--text-muted)", bg: "rgba(92, 82, 74, 0.2)" },
     "드랍": { color: "var(--error)", bg: "rgba(239, 68, 68, 0.12)" },
 };
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, dict }: { project: Project; dict: Dictionary }) {
     const [expanded, setExpanded] = useState(false);
     const status = statusStyles[project.status] ?? statusStyles["archived"];
+    const statusLabel = (dict.status as Record<string, string>)[project.status] ?? project.status;
 
     return (
         <div
@@ -61,7 +64,7 @@ function ProjectCard({ project }: { project: Project }) {
                         className="text-xs px-2 py-0.5 rounded-full whitespace-nowrap"
                         style={{ color: status.color, backgroundColor: status.bg }}
                     >
-                        {project.status}
+                        {statusLabel}
                     </span>
                 </div>
             </div>
@@ -112,7 +115,7 @@ function ProjectCard({ project }: { project: Project }) {
                         className="text-xs px-2 py-0.5 rounded"
                         style={{ color: "var(--secondary)", backgroundColor: "var(--secondary-dim)" }}
                     >
-                        비공개
+                        {dict.projects.private}
                     </span>
                 )}
             </div>
@@ -120,7 +123,7 @@ function ProjectCard({ project }: { project: Project }) {
     );
 }
 
-export function ProjectsSection({ projects }: { projects: Project[] }) {
+export function ProjectsSection({ projects, dict, blogProjectsUrl }: { projects: Project[]; dict: Dictionary; blogProjectsUrl: string }) {
     if (projects.length === 0) return null;
 
     const grouped = projects.reduce<Record<number, Project[]>>((acc, p) => {
@@ -134,13 +137,13 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
         <div className="max-w-6xl mx-auto">
             <div className="section-label mb-2">Projects</div>
             <p className="text-sm mb-8" style={{ color: "var(--text-secondary)" }}>
-                여태까지 만들었던 프로젝트들이에요.{" "}
+                {dict.projects.intro}{" "}
                 <Link
-                    href="https://blog.lemondouble.com/projects/"
+                    href={blogProjectsUrl}
                     target="_blank"
                     className="underline hover:text-[var(--primary)] transition-colors"
                 >
-                    자세히 보기 →
+                    {dict.projects.viewMore}
                 </Link>
             </p>
 
@@ -151,7 +154,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                         {grouped[year].map(project => (
-                            <ProjectCard key={project.slug} project={project} />
+                            <ProjectCard key={project.slug} project={project} dict={dict} />
                         ))}
                     </div>
                 </div>
