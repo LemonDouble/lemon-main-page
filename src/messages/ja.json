@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "title": "レモンダブル / lemondouble.com",
+    "description": "レモンダブルのポートフォリオ / メインページ"
+  },
+  "hero": {
+    "intro": [
+      "안녕하세요! 제 이름은...",
+      "Hello! my name is...",
+      "こんにちは！私の名前は...",
+      "你好！我的名字是...",
+      "你好！我的名字是..."
+    ],
+    "tagline": "面白いものを作るのが好きです。",
+    "characterAlt": "キャラクター画像"
+  },
+  "portfolio": {
+    "tabProjects": "Projects",
+    "tabSkills": "Skills"
+  },
+  "projects": {
+    "intro": "これまでに作ってきたプロジェクトです。",
+    "viewMore": "詳しく見る →",
+    "private": "非公開"
+  },
+  "skills": {
+    "intro": "こんな技術を使って色々作っています。",
+    "viewMore": "詳しく見る →",
+    "level": {
+      "primary": "🔥 メイン",
+      "secondary": "🛠️ たまに使う",
+      "familiar": "📚 触ったことあり"
+    }
+  },
+  "status": {
+    "개발중": "開発中",
+    "완료": "完了",
+    "완료 (개인용)": "完了 (個人用)",
+    "완료 (고도화 중)": "完了 (改善中)",
+    "운영중": "運用中",
+    "archived": "archived",
+    "드랍": "中止"
+  },
+  "languageSwitcher": {
+    "label": "言語を選択"
+  }
+}

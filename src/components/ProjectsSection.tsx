@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Markdown from "react-markdown";
-import { SiGithub } from "@icons-pack/react-simple-icons";
+import type { Dictionary } from "@/lib/i18n";
 
 export interface Project {
     name: string;
@@ -31,19 +31,20 @@ const statusStyles: Record<string, { color: string; bg: string; border: string }
     "드랍": { color: "var(--error)", bg: "rgba(239, 68, 68, 0.12)", border: "rgba(239, 68, 68, 0.25)" },
 };
 
-function StatusBadge({ status }: { status: string }) {
+function StatusBadge({ status, dict }: { status: string; dict: Dictionary }) {
     const style = statusStyles[status] ?? statusStyles["archived"];
+    const label = (dict.status as Record<string, string>)[status] ?? status;
     return (
         <span
             className="text-xs font-semibold px-2.5 py-0.5 rounded-full whitespace-nowrap"
             style={{ color: style.color, backgroundColor: style.bg, border: `1px solid ${style.border}` }}
         >
-            {status}
+            {label}
         </span>
     );
 }
 
-function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
+function ProjectCard({ project, dict, onClick }: { project: Project; dict: Dictionary; onClick: () => void }) {
     return (
         <button
             type="button"
@@ -52,6 +53,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
         >
             {project.image && (
                 <div className="aspect-video overflow-hidden border-b border-[var(--border)]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                         src={`https://blog.lemondouble.com/images/projects/${project.image}`}
                         alt=""
@@ -68,11 +70,11 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
                     {project.tagline}
                 </p>
                 <div className="flex gap-1.5 flex-wrap mt-auto">
-                    <StatusBadge status={project.status} />
+                    <StatusBadge status={project.status} dict={dict} />
                     {project.private && (
                         <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full whitespace-nowrap"
                             style={{ color: "var(--text-secondary)", backgroundColor: "rgba(168, 158, 149, 0.12)", border: "1px solid rgba(168, 158, 149, 0.25)" }}>
-                            비공개
+                            {dict.projects.private}
                         </span>
                     )}
                     {project.fork_of && (
@@ -87,9 +89,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
     );
 }
 
-function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
-    const status = statusStyles[project.status] ?? statusStyles["archived"];
-
+function ProjectModal({ project, dict, onClose }: { project: Project; dict: Dictionary; onClose: () => void }) {
     useEffect(() => {
         document.body.style.overflow = "hidden";
         return () => { document.body.style.overflow = ""; };
@@ -115,13 +115,14 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                     type="button"
                     onClick={onClose}
                     className="sticky top-0 float-right w-10 h-10 flex items-center justify-center text-2xl text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-hover)] cursor-pointer rounded-lg z-[2] mt-2 mr-2 bg-[rgba(28,24,22,0.8)] backdrop-blur-sm"
-                    aria-label="닫기"
+                    aria-label="Close"
                 >
                     &times;
                 </button>
                 <div className="p-8">
                     {project.image && (
                         <div className="-mx-8 -mt-8 mb-6 border-b border-[var(--border)] overflow-hidden">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src={`https://blog.lemondouble.com/images/projects/${project.image}`}
                                 alt=""
@@ -151,11 +152,11 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                     </p>
 
                     <div className="flex flex-wrap items-center gap-2 mb-5 pb-5 border-b border-[var(--border)]">
-                        <StatusBadge status={project.status} />
+                        <StatusBadge status={project.status} dict={dict} />
                         {project.private && (
                             <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full"
                                 style={{ color: "var(--text-secondary)", backgroundColor: "rgba(168, 158, 149, 0.12)", border: "1px solid rgba(168, 158, 149, 0.25)" }}>
-                                비공개
+                                {dict.projects.private}
                             </span>
                         )}
                         {project.languages?.map(lang => (
@@ -165,7 +166,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                         ))}
                         {project.fork_of && (
                             <span className="text-sm text-[var(--text-secondary)]">
-                                원본:{" "}
+                                Fork:{" "}
                                 <a href={`https://github.com/${project.fork_of}`} target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">
                                     {project.fork_of}
                                 </a>
@@ -173,7 +174,6 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                         )}
                         {project.retrospective && (
                             <span className="text-sm text-[var(--text-secondary)]">
-                                회고:{" "}
                                 <a href={`https://blog.lemondouble.com${project.retrospective}`} target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">
                                     {project.retrospective}
                                 </a>
@@ -200,7 +200,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
     );
 }
 
-export function ProjectsSection({ projects }: { projects: Project[] }) {
+export function ProjectsSection({ projects, dict, blogProjectsUrl }: { projects: Project[]; dict: Dictionary; blogProjectsUrl: string }) {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
     if (projects.length === 0) return null;
@@ -216,13 +216,13 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
         <div className="max-w-6xl mx-auto">
             <div className="section-label mb-2">Projects</div>
             <p className="text-sm mb-8" style={{ color: "var(--text-secondary)" }}>
-                여태까지 만들었던 프로젝트들이에요.{" "}
+                {dict.projects.intro}{" "}
                 <Link
-                    href="https://blog.lemondouble.com/projects/"
+                    href={blogProjectsUrl}
                     target="_blank"
                     className="underline hover:text-[var(--primary)] transition-colors"
                 >
-                    자세히 보기 →
+                    {dict.projects.viewMore}
                 </Link>
             </p>
 
@@ -236,6 +236,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                             <ProjectCard
                                 key={project.slug}
                                 project={project}
+                                dict={dict}
                                 onClick={() => setSelectedProject(project)}
                             />
                         ))}
@@ -246,6 +247,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
             {selectedProject && (
                 <ProjectModal
                     project={selectedProject}
+                    dict={dict}
                     onClose={() => setSelectedProject(null)}
                 />
             )}

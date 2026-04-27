@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "title": "LemonDouble / lemondouble.com",
+    "description": "LemonDouble's portfolio / main page"
+  },
+  "hero": {
+    "intro": [
+      "안녕하세요! 제 이름은...",
+      "Hello! my name is...",
+      "こんにちは！私の名前は...",
+      "你好！我的名字是...",
+      "你好！我的名字是..."
+    ],
+    "tagline": "I like building fun things.",
+    "characterAlt": "Character image"
+  },
+  "portfolio": {
+    "tabProjects": "Projects",
+    "tabSkills": "Skills"
+  },
+  "projects": {
+    "intro": "Projects I've built so far.",
+    "viewMore": "View details →",
+    "private": "Private"
+  },
+  "skills": {
+    "intro": "These are the tools I use to build all sorts of things.",
+    "viewMore": "View details →",
+    "level": {
+      "primary": "🔥 Primary",
+      "secondary": "🛠️ Occasional",
+      "familiar": "📚 Familiar"
+    }
+  },
+  "status": {
+    "개발중": "In Development",
+    "완료": "Done",
+    "완료 (개인용)": "Done (Personal)",
+    "완료 (고도화 중)": "Done (Iterating)",
+    "운영중": "Active",
+    "archived": "archived",
+    "드랍": "Dropped"
+  },
+  "languageSwitcher": {
+    "label": "Select language"
+  }
+}

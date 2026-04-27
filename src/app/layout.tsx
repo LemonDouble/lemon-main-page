@@ -1,25 +1,26 @@
-import type { Metadata } from 'next'
 import './globals.css'
 import React from "react";
 
-export const metadata: Metadata = {
-  title: '레몬더블 / lemondouble.com',
-  icons: {
-    icon: 'https://cdn.lemondouble.com/homepage/favicon.ico',
-  },
-  themeColor: '#12100E',
+export const metadata = {
+    icons: {
+        icon: 'https://cdn.lemondouble.com/homepage/favicon.ico',
+    },
+}
+
+export const viewport = {
+    themeColor: '#12100E',
 }
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode
 }) {
-  return (
-    <html lang="ko">
-      <body>
-        {children}
-      </body>
-    </html>
-  )
+    return (
+        <html lang="ko">
+            <body>
+                {children}
+            </body>
+        </html>
+    )
 }

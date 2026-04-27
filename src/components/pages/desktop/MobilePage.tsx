@@ -5,15 +5,16 @@ import { Typewriter } from "react-simple-typewriter";
 import { SiGithub, SiDiscord } from "@icons-pack/react-simple-icons";
 import { TwitterBird } from "@/components/icons/TwitterBird";
 import { NotebookPen } from "lucide-react";
+import type { Dictionary } from "@/lib/i18n";
 
-export function MobilePage() {
+export function MobilePage({ dict }: { dict: Dictionary }) {
     return (
         <section className="mobile-page hidden w-full min-h-screen relative overflow-x-clip">
             <div className="relative z-10 px-6 pt-16 pb-8 text-center">
                 <div className="animate-fade-in-up">
                     <div className="text-lg font-light tracking-wide" style={{ color: 'var(--text-secondary)' }}>
                         <Typewriter
-                            words={["안녕하세요! 제 이름은...", "Hello! my name is...", "こんにちは！私の名前は..."]}
+                            words={dict.hero.intro}
                             loop={0}
                             cursor={true}
                             cursorStyle="_"
@@ -29,7 +30,7 @@ export function MobilePage() {
                 <div className="mt-8 animate-fade-in-up-delay-1">
                     <div className="text-base mb-1 galmuri" style={{ color: 'var(--secondary)' }}>Software Engineer</div>
                     <div className="text-lg font-light leading-relaxed" style={{ color: 'var(--text-primary)' }}>
-                        재밌는 걸 만드는걸 좋아해요.
+                        {dict.hero.tagline}
                     </div>
                 </div>
 
@@ -52,7 +53,7 @@ export function MobilePage() {
                     <Image
                         className="relative mx-auto object-contain drop-shadow-[0_0_30px_rgba(240,185,11,0.12)]"
                         src="/image/character/lemon-character.webp"
-                        alt="캐릭터 이미지"
+                        alt={dict.hero.characterAlt}
                         width={350} height={400}
                         loading="eager"
                         priority
