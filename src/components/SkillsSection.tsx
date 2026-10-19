@@ -1,19 +1,6 @@
 import Link from "next/link";
+import type { Skill } from "@/lib/blog";
 import type { Dictionary } from "@/lib/i18n";
-
-export interface Skill {
-    category: string;
-    category_order: number;
-    category_slug: string;
-    color: string;
-    level: "primary" | "secondary" | "familiar";
-    logo: string;
-    logo_color: "white" | "black";
-    name: string;
-    slug: string;
-    custom_logo?: string;
-    note?: string;
-}
 
 const LEVELS: Skill["level"][] = ["primary", "secondary", "familiar"];
 
@@ -63,7 +50,7 @@ export function SkillsSection({ skills, dict, blogSkillsUrl }: { skills: Skill[]
 
     return (
         <div className="max-w-6xl mx-auto">
-            <div className="section-label mb-2">Skills</div>
+            <h2 className="section-label mb-2">Skills</h2>
             <p className="text-sm mb-8" style={{ color: "var(--text-secondary)" }}>
                 {dict.skills.intro}{" "}
                 <Link
@@ -71,7 +58,7 @@ export function SkillsSection({ skills, dict, blogSkillsUrl }: { skills: Skill[]
                     target="_blank"
                     className="underline hover:text-[var(--primary)] transition-colors"
                 >
-                    {dict.skills.viewMore}
+                    {dict.detail.viewOnBlog}
                 </Link>
             </p>
 

@@ -3,29 +3,90 @@
     "title": "레몬더블 / lemondouble.com",
     "description": "레몬더블의 포트폴리오 / 메인 페이지"
   },
-  "hero": {
-    "intro": [
-      "안녕하세요! 제 이름은...",
-      "Hello! my name is...",
-      "こんにちは！私の名前は...",
-      "你好！我的名字是...",
-      "你好！我的名字是..."
-    ],
-    "tagline": "재밌는 걸 만드는걸 좋아해요.",
-    "characterAlt": "캐릭터 이미지"
+  "nav": {
+    "label": "보기 방식",
+    "story": "스토리",
+    "detail": "자세히"
   },
-  "portfolio": {
-    "tabProjects": "Projects",
-    "tabSkills": "Skills"
+  "languageSwitcher": {
+    "label": "언어 선택"
+  },
+  "story": {
+    "scrollHint": "스크롤해서 따라오세요",
+    "characterAlt": "은발에 마녀 모자를 쓴 캐릭터",
+    "scenes": {
+      "intro": {
+        "title": "LemonDouble",
+        "body": "재밌는 걸 만드는 걸 좋아하는 개발자예요.\n집 안의 서버부터 직접 설계한 키보드까지, 지금까지 만든 것들을 소개할게요."
+      },
+      "voice": {
+        "title": "기계에게 목소리를",
+        "body": "일본어 TTS 라이브러리를 더 쓰기 편하게 다듬었어요.\n그 목소리로 집 안의 스피커가 말하게 만들었어요."
+      },
+      "homelab": {
+        "title": "집 안의 작은 데이터센터",
+        "body": "미니PC와 GPU 워크스테이션으로 K3S 클러스터를 운영해요.\n사진 백업, 로컬 LLM, 검색 서버, SNS까지 직접 띄워서 쓰고 있어요."
+      },
+      "iot": {
+        "title": "집을 코드로 움직이기",
+        "body": "공식 연동이 없는 기기는 연동을 직접 만들어요.\n전기 요금, 지도, 아침 날씨 브리핑까지 Home Assistant 하나로 관리해요."
+      },
+      "hardware": {
+        "title": "손으로 만지는 것들",
+        "body": "회로와 PCB를 직접 설계하고, 케이스는 3D 프린터로 뽑아요.\n무선 매크로패드를 완성했고, 게임 속 무기도 만들어봤어요."
+      },
+      "agents": {
+        "title": "AI 에이전트와 함께 일하기",
+        "body": "Claude Code와 함께 일하는 시간이 많아요.\n사용량을 한눈에 보는 대시보드와, 에이전트가 일관된 디자인을 만들 수 있게 해 주는 디자인 시스템을 만들었어요."
+      },
+      "contact": {
+        "title": "편하게 연락 주세요",
+        "body": "지금까지 만든 프로젝트와 사용하는 기술은 오른쪽 위의 '{detail}'에서 한 페이지로 볼 수 있어요.\n궁금한 게 있으면 아래 채널 어디로든 연락 주세요.",
+        "cta": "전체 프로젝트 보기 →"
+      }
+    },
+    "projects": {
+      "hayakoe": "쓰기 편하게 다듬은 일본어 TTS 라이브러리",
+      "lemon-tts": "어떤 언어로 입력해도 일본어로 말해 주는 Home Assistant 통합",
+      "lemon-k8s-cluster": "미니PC와 GPU 워크스테이션으로 구성한 K3S 홈랩 클러스터",
+      "misskey": "직접 운영하는 마이크로블로깅 SNS 인스턴스",
+      "misskey-geeknews-webhooks": "GeekNews 새 글을 Misskey에 자동으로 올려 주는 봇",
+      "kepco-powerplanner-ha-addon": "한전 파워플래너의 전기 사용량을 Home Assistant로 가져오는 애드온",
+      "hass-kakao-map-changer": "Home Assistant 지도를 카카오맵으로 바꿔 주는 통합",
+      "shiroko": "매일 아침 TV에 띄우는 날씨 브리핑 앱",
+      "geardrak": "회로부터 케이스까지 직접 만든 16키 무선 매크로패드",
+      "supernova": "블루 아카이브 아리스의 슈퍼노바를 3D 프린팅으로 만든 전시 소품",
+      "claude-dashboard": "Claude Code 사용량을 한눈에 보는 웹 대시보드",
+      "lemon-design-system": "AI 에이전트도 일관된 디자인을 만들 수 있게 해 주는 개인 디자인 시스템"
+    }
+  },
+  "detail": {
+    "tagline": "재밌는 걸 만드는 걸 좋아해요.",
+    "highlights": {
+      "title": "Highlights",
+      "intro": "요즘 가장 공들이고 있는 프로젝트들이에요."
+    },
+    "tiers": {
+      "active": {
+        "title": "Running",
+        "intro": "지금도 운영하거나 개발하고 있는 프로젝트예요."
+      },
+      "done": {
+        "title": "Finished",
+        "intro": "완성해서 잘 쓰고 있는 프로젝트예요."
+      },
+      "archive": {
+        "title": "Archive",
+        "intro": "공부용 실습, 중단한 프로젝트, 오래된 프로젝트예요."
+      }
+    },
+    "viewOnBlog": "블로그에서 보기 →"
   },
   "projects": {
-    "intro": "여태까지 만들었던 프로젝트들이에요.",
-    "viewMore": "자세히 보기 →",
     "private": "비공개"
   },
   "skills": {
     "intro": "이런 기술들을 사용해서 이런저런 걸 만들고 있어요.",
-    "viewMore": "자세히 보기 →",
     "level": {
       "primary": "🔥 주력",
       "secondary": "🛠️ 가끔씩 써요",
@@ -40,8 +101,5 @@
     "운영중": "운영중",
     "archived": "archived",
     "드랍": "드랍"
-  },
-  "languageSwitcher": {
-    "label": "언어 선택"
   }
 }

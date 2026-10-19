@@ -1,25 +1,9 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react";
-import Link from "next/link";
 import Markdown from "react-markdown";
+import type { Project } from "@/lib/blog";
 import type { Dictionary } from "@/lib/i18n";
-
-export interface Project {
-    name: string;
-    slug: string;
-    tagline: string;
-    description: string;
-    status: string;
-    year: number;
-    languages: string[];
-    url: string | null;
-    private: boolean;
-    featured: boolean;
-    fork_of?: string;
-    retrospective?: string;
-    image?: string;
-}
 
 const statusStyles: Record<string, { color: string; bg: string; border: string }> = {
     "개발중": { color: "var(--primary)", bg: "var(--primary-dim)", border: "rgba(240, 185, 11, 0.25)" },
@@ -200,57 +184,58 @@ function ProjectModal({ project, dict, onClose }: { project: Project; dict: Dict
     );
 }
 
-export function ProjectsSection({ projects, dict, blogProjectsUrl }: { projects: Project[]; dict: Dictionary; blogProjectsUrl: string }) {
+export interface ProjectGroup {
+    key: string;
+    title: string;
+    intro: string;
+    projects: Project[];
+    collapsed?: boolean;
+}
+
+function ProjectGrid({ projects, dict, onSelect }: { projects: Project[]; dict: Dictionary; onSelect: (project: Project) => void }) {
+    return (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+            {projects.map(project => (
+                <ProjectCard key={project.slug} project={project} dict={dict} onClick={() => onSelect(project)} />
+            ))}
+        </div>
+    );
+}
+
+export function ProjectGroups({ groups, dict }: { groups: ProjectGroup[]; dict: Dictionary }) {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-    if (projects.length === 0) return null;
-
-    const grouped = projects.reduce<Record<number, Project[]>>((acc, p) => {
-        (acc[p.year] ??= []).push(p);
-        return acc;
-    }, {});
-
-    const years = Object.keys(grouped).map(Number).sort((a, b) => b - a);
-
     return (
-        <div className="max-w-6xl mx-auto">
-            <div className="section-label mb-2">Projects</div>
-            <p className="text-sm mb-8" style={{ color: "var(--text-secondary)" }}>
-                {dict.projects.intro}{" "}
-                <Link
-                    href={blogProjectsUrl}
-                    target="_blank"
-                    className="underline hover:text-[var(--primary)] transition-colors"
-                >
-                    {dict.projects.viewMore}
-                </Link>
-            </p>
-
-            {years.map(year => (
-                <div key={year} className="mb-12 last:mb-0">
-                    <h3 className="text-xl galmuri mb-4" style={{ color: "var(--primary)" }}>
-                        {year}
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-                        {grouped[year].map(project => (
-                            <ProjectCard
-                                key={project.slug}
-                                project={project}
-                                dict={dict}
-                                onClick={() => setSelectedProject(project)}
-                            />
-                        ))}
-                    </div>
-                </div>
+        <>
+            {groups.filter(group => group.projects.length > 0).map(group => (
+                <section key={group.key} className="mb-16">
+                    {group.collapsed ? (
+                        <details className="project-group-collapsible">
+                            <summary>
+                                <span className="section-label">{group.title}</span>
+                                <span className="project-group-count">{group.projects.length}</span>
+                                <span className="block text-sm mt-2 text-[var(--text-secondary)]">{group.intro}</span>
+                            </summary>
+                            <div className="mt-6">
+                                <ProjectGrid projects={group.projects} dict={dict} onSelect={setSelectedProject} />
+                            </div>
+                        </details>
+                    ) : (
+                        <>
+                            <h2 className="section-label mb-2">
+                                {group.title}
+                                <span className="project-group-count">{group.projects.length}</span>
+                            </h2>
+                            <p className="text-sm mb-6 text-[var(--text-secondary)]">{group.intro}</p>
+                            <ProjectGrid projects={group.projects} dict={dict} onSelect={setSelectedProject} />
+                        </>
+                    )}
+                </section>
             ))}
 
             {selectedProject && (
-                <ProjectModal
-                    project={selectedProject}
-                    dict={dict}
-                    onClose={() => setSelectedProject(null)}
-                />
+                <ProjectModal project={selectedProject} dict={dict} onClose={() => setSelectedProject(null)} />
             )}
-        </div>
+        </>
     );
 }

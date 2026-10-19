@@ -9,6 +9,7 @@ export const NON_DEFAULT_LOCALES = ["en", "ja", "zh-cn", "zh-tw"] as const;
 export const DEFAULT_LOCALE = "ko";
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
+export type View = "story" | "detail";
 
 export type Dictionary = typeof koMessages;
 
@@ -24,6 +25,16 @@ export function getDictionary(locale: Locale): Dictionary {
     return dictionaries[locale] ?? dictionaries[DEFAULT_LOCALE];
 }
 
+export function isNonDefaultLocale(value: string): value is Locale {
+    return (NON_DEFAULT_LOCALES as readonly string[]).includes(value);
+}
+
+export function localePath(locale: Locale, view: View): string {
+    const localePrefix = locale === DEFAULT_LOCALE ? "" : `/${locale}`;
+    const viewSuffix = view === "detail" ? "/detail" : "";
+    return localePrefix + viewSuffix || "/";
+}
+
 const OG_LOCALE: Record<Locale, string> = {
     ko: "ko_KR",
     en: "en_US",
@@ -32,31 +43,28 @@ const OG_LOCALE: Record<Locale, string> = {
     "zh-tw": "zh_TW",
 };
 
-export function getOgLocale(locale: Locale): string {
-    return OG_LOCALE[locale];
-}
-
 const SITE_URL = "https://lemondouble.com";
 
-export function getLocaleUrl(locale: Locale): string {
-    return locale === DEFAULT_LOCALE ? SITE_URL : `${SITE_URL}/${locale}`;
+export function getLocaleUrl(locale: Locale, view: View): string {
+    const path = localePath(locale, view);
+    return path === "/" ? SITE_URL : `${SITE_URL}${path}`;
 }
 
-export function getAlternates(locale: Locale) {
+export function getAlternates(locale: Locale, view: View) {
     const languages: Record<string, string> = {};
-    for (const l of SUPPORTED_LOCALES) {
-        languages[l] = getLocaleUrl(l);
+    for (const supportedLocale of SUPPORTED_LOCALES) {
+        languages[supportedLocale] = getLocaleUrl(supportedLocale, view);
     }
-    languages["x-default"] = getLocaleUrl(DEFAULT_LOCALE);
+    languages["x-default"] = getLocaleUrl(DEFAULT_LOCALE, view);
     return {
-        canonical: getLocaleUrl(locale),
+        canonical: getLocaleUrl(locale, view),
         languages,
     };
 }
 
 export function getOpenGraphLocales(locale: Locale) {
     return {
-        locale: getOgLocale(locale),
-        alternateLocale: SUPPORTED_LOCALES.filter(l => l !== locale).map(getOgLocale),
+        locale: OG_LOCALE[locale],
+        alternateLocale: SUPPORTED_LOCALES.filter(other => other !== locale).map(other => OG_LOCALE[other]),
     };
 }

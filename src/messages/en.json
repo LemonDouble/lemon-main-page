@@ -3,29 +3,90 @@
     "title": "LemonDouble / lemondouble.com",
     "description": "LemonDouble's portfolio / main page"
   },
-  "hero": {
-    "intro": [
-      "안녕하세요! 제 이름은...",
-      "Hello! my name is...",
-      "こんにちは！私の名前は...",
-      "你好！我的名字是...",
-      "你好！我的名字是..."
-    ],
-    "tagline": "I like building fun things.",
-    "characterAlt": "Character image"
+  "nav": {
+    "label": "View mode",
+    "story": "Story",
+    "detail": "Details"
   },
-  "portfolio": {
-    "tabProjects": "Projects",
-    "tabSkills": "Skills"
+  "languageSwitcher": {
+    "label": "Select language"
+  },
+  "story": {
+    "scrollHint": "Scroll to follow along",
+    "characterAlt": "A silver-haired character wearing a witch hat",
+    "scenes": {
+      "intro": {
+        "title": "LemonDouble",
+        "body": "I'm a developer who loves building fun things. From the servers in my home to a keyboard I designed myself, here's what I've made so far."
+      },
+      "voice": {
+        "title": "Giving machines a voice",
+        "body": "I polished a Japanese TTS library to make it easier to use. With that voice, the speakers in my home can now talk."
+      },
+      "homelab": {
+        "title": "A tiny datacenter at home",
+        "body": "I run a K3S cluster on a mini PC and a GPU workstation. Photo backups, local LLMs, a search server and even a social network all run on it."
+      },
+      "iot": {
+        "title": "Running my home with code",
+        "body": "When a device has no official integration, I write one. Power bills, maps and the morning weather briefing are all managed in Home Assistant."
+      },
+      "hardware": {
+        "title": "Things you can touch",
+        "body": "I design the circuits and PCBs myself and 3D print the cases. I finished a wireless macropad, and I've also built a weapon from a game."
+      },
+      "agents": {
+        "title": "Working alongside AI agents",
+        "body": "I spend a lot of time working with Claude Code. I built a dashboard to see usage at a glance, and a design system that helps agents produce consistent designs."
+      },
+      "contact": {
+        "title": "Feel free to reach out",
+        "body": "All my projects and the tools I use are collected on one page under '{detail}' in the top right. If you have any questions, reach me on any channel below.",
+        "cta": "See all projects →"
+      }
+    },
+    "projects": {
+      "hayakoe": "A Japanese TTS library polished to be easy to use",
+      "lemon-tts": "A Home Assistant integration that speaks Japanese from any input language",
+      "lemon-k8s-cluster": "A K3S homelab cluster on a mini PC and a GPU workstation",
+      "misskey": "A microblogging social network instance I run myself",
+      "misskey-geeknews-webhooks": "A bot that auto-posts new GeekNews articles to Misskey",
+      "kepco-powerplanner-ha-addon": "An add-on that brings KEPCO PowerPlanner electricity usage into Home Assistant",
+      "hass-kakao-map-changer": "An integration that swaps the Home Assistant map for Kakao Map",
+      "shiroko": "A weather briefing app shown on the TV every morning",
+      "geardrak": "A 16-key wireless macropad I built myself, from circuit to case",
+      "supernova": "A 3D-printed display prop of Aris's Supernova from Blue Archive",
+      "claude-dashboard": "A web dashboard that shows Claude Code usage at a glance",
+      "lemon-design-system": "A personal design system that helps AI agents produce consistent designs"
+    }
+  },
+  "detail": {
+    "tagline": "I like building fun things.",
+    "highlights": {
+      "title": "Highlights",
+      "intro": "The projects I'm putting the most love into lately."
+    },
+    "tiers": {
+      "active": {
+        "title": "Running",
+        "intro": "Projects I'm still operating or developing."
+      },
+      "done": {
+        "title": "Finished",
+        "intro": "Projects that are done and in everyday use."
+      },
+      "archive": {
+        "title": "Archive",
+        "intro": "Study exercises, dropped ideas and older projects."
+      }
+    },
+    "viewOnBlog": "View on the blog →"
   },
   "projects": {
-    "intro": "Projects I've built so far.",
-    "viewMore": "View details →",
     "private": "Private"
   },
   "skills": {
     "intro": "These are the tools I use to build all sorts of things.",
-    "viewMore": "View details →",
     "level": {
       "primary": "🔥 Primary",
       "secondary": "🛠️ Occasional",
@@ -40,8 +101,5 @@
     "운영중": "Active",
     "archived": "archived",
     "드랍": "Dropped"
-  },
-  "languageSwitcher": {
-    "label": "Select language"
   }
 }
