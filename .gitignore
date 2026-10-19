@@ -41,3 +41,7 @@ next-env.d.ts
 # playwright artifacts
 .playwright-mcp/
 /portfolio-*.png
+
+# local illustration sources and drafts
+/output/
+/ref/

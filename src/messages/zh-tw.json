@@ -3,29 +3,90 @@
     "title": "LemonDouble / lemondouble.com",
     "description": "LemonDouble 的作品集 / 主頁"
   },
-  "hero": {
-    "intro": [
-      "안녕하세요! 제 이름은...",
-      "Hello! my name is...",
-      "こんにちは！私の名前は...",
-      "你好！我的名字是...",
-      "你好！我的名字是..."
-    ],
-    "tagline": "我喜歡做一些有趣的東西。",
-    "characterAlt": "角色圖像"
+  "nav": {
+    "label": "瀏覽模式",
+    "story": "故事",
+    "detail": "詳情"
   },
-  "portfolio": {
-    "tabProjects": "Projects",
-    "tabSkills": "Skills"
+  "languageSwitcher": {
+    "label": "選擇語言"
+  },
+  "story": {
+    "scrollHint": "向下捲動，跟著我來",
+    "characterAlt": "銀髮、戴著魔女帽的角色",
+    "scenes": {
+      "intro": {
+        "title": "LemonDouble",
+        "body": "我是一名喜歡做有趣東西的開發者。從家裡的伺服器到自己設計的鍵盤，介紹一下我至今做過的東西。"
+      },
+      "voice": {
+        "title": "讓機器擁有聲音",
+        "body": "我把一個日語 TTS 函式庫打磨得更好用了。用這個聲音，讓家裡的喇叭也能開口說話。"
+      },
+      "homelab": {
+        "title": "家裡的小型資料中心",
+        "body": "我用迷你主機和 GPU 工作站營運 K3S 叢集。照片備份、本地 LLM、搜尋伺服器，甚至社群網路都自己架設。"
+      },
+      "iot": {
+        "title": "用程式碼驅動整個家",
+        "body": "沒有官方整合的裝置，就自己寫整合。電費、地圖、早晨的天氣播報，全部用 Home Assistant 統一管理。"
+      },
+      "hardware": {
+        "title": "能親手觸摸的東西",
+        "body": "我自己設計電路和 PCB，外殼用 3D 列印機列印。做好了一個無線巨集鍵盤，也做過遊戲裡的武器。"
+      },
+      "agents": {
+        "title": "與 AI 代理一起工作",
+        "body": "我和 Claude Code 一起工作的時間很長。做了一個一眼看清用量的儀表板，以及讓代理做出一致設計的設計系統。"
+      },
+      "contact": {
+        "title": "歡迎隨時聯絡",
+        "body": "我做過的專案和使用的技術，都可以在右上角的「{detail}」中一頁看完。有任何問題，歡迎透過下面任一管道聯絡我。",
+        "cta": "查看全部專案 →"
+      }
+    },
+    "projects": {
+      "hayakoe": "打磨得更好用的日語 TTS 函式庫",
+      "lemon-tts": "無論輸入什麼語言都用日語說出來的 Home Assistant 整合",
+      "lemon-k8s-cluster": "由迷你主機和 GPU 工作站組成的 K3S 家庭實驗室叢集",
+      "misskey": "我自己營運的微網誌社群網路實例",
+      "misskey-geeknews-webhooks": "把 GeekNews 新文章自動發布到 Misskey 的機器人",
+      "kepco-powerplanner-ha-addon": "把韓國電力 PowerPlanner 用電資料接入 Home Assistant 的附加元件",
+      "hass-kakao-map-changer": "把 Home Assistant 地圖換成 Kakao 地圖的整合",
+      "shiroko": "每天早上顯示在電視上的天氣播報應用程式",
+      "geardrak": "從電路到外殼都親手做的 16 鍵無線巨集鍵盤",
+      "supernova": "用 3D 列印製作的《蔚藍檔案》愛麗絲的超新星展示道具",
+      "claude-dashboard": "一眼看清 Claude Code 用量的網頁儀表板",
+      "lemon-design-system": "讓 AI 代理也能做出一致設計的個人設計系統"
+    }
+  },
+  "detail": {
+    "tagline": "喜歡做有趣的東西。",
+    "highlights": {
+      "title": "Highlights",
+      "intro": "最近最用心投入的專案。"
+    },
+    "tiers": {
+      "active": {
+        "title": "Running",
+        "intro": "仍在營運或開發中的專案。"
+      },
+      "done": {
+        "title": "Finished",
+        "intro": "已經完成並在日常使用的專案。"
+      },
+      "archive": {
+        "title": "Archive",
+        "intro": "學習練習、中止的專案和較早的專案。"
+      }
+    },
+    "viewOnBlog": "在部落格中查看 →"
   },
   "projects": {
-    "intro": "至今為止做過的專案。",
-    "viewMore": "查看詳情 →",
     "private": "私有"
   },
   "skills": {
     "intro": "用這些技術做著各種各樣的東西。",
-    "viewMore": "查看詳情 →",
     "level": {
       "primary": "🔥 主力",
       "secondary": "🛠️ 偶爾使用",
@@ -40,8 +101,5 @@
     "운영중": "營運中",
     "archived": "archived",
     "드랍": "已棄用"
-  },
-  "languageSwitcher": {
-    "label": "選擇語言"
   }
 }

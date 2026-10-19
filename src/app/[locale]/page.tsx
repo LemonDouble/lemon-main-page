@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { HomePage } from "@/components/HomePage";
-import {
-    NON_DEFAULT_LOCALES,
-    getAlternates,
-    getDictionary,
-    getOpenGraphLocales,
-    getLocaleUrl,
-    type Locale,
-} from "@/lib/i18n";
+import { StoryPage } from "@/components/story/StoryPage";
+import { NON_DEFAULT_LOCALES, isNonDefaultLocale } from "@/lib/i18n";
+import { buildMetadata } from "@/lib/metadata";
 
 export const dynamicParams = false;
 
@@ -18,33 +12,13 @@ export function generateStaticParams() {
 
 type Params = { locale: string };
 
-function isLocale(value: string): value is Locale {
-    return (NON_DEFAULT_LOCALES as readonly string[]).includes(value);
-}
-
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
-    const { locale: raw } = await params;
-    if (!isLocale(raw)) return {};
-    const locale = raw;
-    const dict = getDictionary(locale);
-    const og = getOpenGraphLocales(locale);
-    return {
-        title: dict.metadata.title,
-        description: dict.metadata.description,
-        alternates: getAlternates(locale),
-        openGraph: {
-            title: dict.metadata.title,
-            description: dict.metadata.description,
-            url: getLocaleUrl(locale),
-            locale: og.locale,
-            alternateLocale: og.alternateLocale,
-            type: "website",
-        },
-    };
+    const { locale } = await params;
+    return isNonDefaultLocale(locale) ? buildMetadata(locale, "story") : {};
 }
 
-export default async function LocalePage({ params }: { params: Promise<Params> }) {
-    const { locale: raw } = await params;
-    if (!isLocale(raw)) notFound();
-    return <HomePage locale={raw} />;
+export default async function LocaleStory({ params }: { params: Promise<Params> }) {
+    const { locale } = await params;
+    if (!isNonDefaultLocale(locale)) notFound();
+    return <StoryPage locale={locale} />;
 }

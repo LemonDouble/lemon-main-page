@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { SUPPORTED_LOCALES, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
+import { SUPPORTED_LOCALES, localePath, type Locale, type View } from "@/lib/i18n";
 
 const LOCALE_LABELS: Record<Locale, string> = {
     ko: "한국어",
@@ -11,11 +11,7 @@ const LOCALE_LABELS: Record<Locale, string> = {
     "zh-tw": "繁體中文",
 };
 
-function pathFor(locale: Locale): string {
-    return locale === DEFAULT_LOCALE ? "/" : `/${locale}`;
-}
-
-export function LanguageSwitcher({ current, label }: { current: Locale; label: string }) {
+export function LanguageSwitcher({ current, view, label }: { current: Locale; view: View; label: string }) {
     const [open, setOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -64,7 +60,7 @@ export function LanguageSwitcher({ current, label }: { current: Locale; label: s
                     {SUPPORTED_LOCALES.map(locale => (
                         <a
                             key={locale}
-                            href={pathFor(locale)}
+                            href={localePath(locale, view)}
                             className={`lang-switcher-item${locale === current ? " active" : ""}`}
                             lang={locale}
                             role="menuitem"

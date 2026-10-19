@@ -1,32 +1,9 @@
-import type { Metadata } from "next";
-import { HomePage } from "@/components/HomePage";
-import {
-    DEFAULT_LOCALE,
-    getAlternates,
-    getDictionary,
-    getOpenGraphLocales,
-    getLocaleUrl,
-} from "@/lib/i18n";
+import { StoryPage } from "@/components/story/StoryPage";
+import { DEFAULT_LOCALE } from "@/lib/i18n";
+import { buildMetadata } from "@/lib/metadata";
 
-export async function generateMetadata(): Promise<Metadata> {
-    const locale = DEFAULT_LOCALE;
-    const dict = getDictionary(locale);
-    const og = getOpenGraphLocales(locale);
-    return {
-        title: dict.metadata.title,
-        description: dict.metadata.description,
-        alternates: getAlternates(locale),
-        openGraph: {
-            title: dict.metadata.title,
-            description: dict.metadata.description,
-            url: getLocaleUrl(locale),
-            locale: og.locale,
-            alternateLocale: og.alternateLocale,
-            type: "website",
-        },
-    };
-}
+export const metadata = buildMetadata(DEFAULT_LOCALE, "story");
 
-export default async function Home() {
-    return <HomePage locale={DEFAULT_LOCALE} />;
+export default function Home() {
+    return <StoryPage locale={DEFAULT_LOCALE} />;
 }
