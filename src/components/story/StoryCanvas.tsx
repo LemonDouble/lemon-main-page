@@ -128,8 +128,8 @@ export function StoryCanvas({ position, reducedMotion, label }: { position: numb
                 return image;
             }),
         );
-        const allImages = sceneFrames.flat();
-        let luminances: (Float32Array | null)[][] = sceneFrames.map(frames => frames.map(() => null));
+        // 이미지 원본을 읽는 작업은 모바일에서 무겁기 때문에, 필요한 컷만 처음 쓸 때 측정한다.
+        const luminanceCache = new Map<HTMLImageElement, Float32Array>();
         let grid = createGrid(1, 1);
         let width = 0;
         let height = 0;
@@ -143,10 +143,15 @@ export function StoryCanvas({ position, reducedMotion, label }: { position: numb
             return Boolean(image?.complete && image.naturalWidth > 0);
         }
 
-        function refreshLuminance() {
-            luminances = sceneFrames.map((frames, sceneIndex) =>
-                frames.map(image => (isReady(image) ? measureLuminance(image, grid, STORY_SCENES[sceneIndex].focusX) : null)),
-            );
+        function luminanceOf(sceneIndex: number, frameIndex: number): Float32Array | null {
+            const image = sceneFrames[sceneIndex]?.[frameIndex];
+            if (!isReady(image)) return null;
+            let luminance = luminanceCache.get(image);
+            if (!luminance) {
+                luminance = measureLuminance(image, grid, STORY_SCENES[sceneIndex].focusX);
+                luminanceCache.set(image, luminance);
+            }
+            return luminance;
         }
 
         function resize() {
@@ -162,7 +167,9 @@ export function StoryCanvas({ position, reducedMotion, label }: { position: numb
             }
             grid = createGrid(width, height);
             sparkles = [];
-            refreshLuminance();
+            luminanceCache.clear();
+            // 캔버스 크기를 바꾸면 내용이 지워지므로, 다음 프레임을 기다리지 않고 바로 다시 그려 깜빡임을 막는다.
+            draw(performance.now());
         }
 
         function sceneCamera(sceneIndex: number, progress: number): CameraPosition {
@@ -245,8 +252,8 @@ export function StoryCanvas({ position, reducedMotion, label }: { position: numb
             drawFrame(context!, nextIndex, 0, sceneCamera(nextIndex, 0));
             context!.restore();
 
-            const currentLuminance = luminances[activeIndex][activeFrame];
-            const nextLuminance = luminances[nextIndex][0];
+            const currentLuminance = luminanceOf(activeIndex, activeFrame);
+            const nextLuminance = luminanceOf(nextIndex, 0);
             context!.fillStyle = BURNING_CELL_COLOR;
             for (const cell of burningCells) {
                 context!.fillRect((cell % grid.columns) * CELL_SIZE, Math.floor(cell / grid.columns) * CELL_SIZE, CELL_SIZE, CELL_SIZE);
@@ -260,7 +267,7 @@ export function StoryCanvas({ position, reducedMotion, label }: { position: numb
         }
 
         function drawSparkles(activeIndex: number, activeFrame: number, now: number) {
-            const luminance = luminances[activeIndex][activeFrame];
+            const luminance = luminanceOf(activeIndex, activeFrame);
             if (!luminance) return;
             sparkles = sparkles.filter(sparkle => now - sparkle.bornAt < SPARKLE_LIFETIME_MS);
             for (let attempt = 0; sparkles.length < SPARKLE_COUNT && attempt < 12; attempt++) {
@@ -343,8 +350,7 @@ export function StoryCanvas({ position, reducedMotion, label }: { position: numb
             }
         }
 
-        function render(now: number) {
-            frame = requestAnimationFrame(render);
+        function draw(now: number) {
             const { position, reducedMotion, positionChangedAt } = stateRef.current;
             const isSettled = now - positionChangedAt > SETTLE_DELAY_MS;
             const targetPosition = isSettled ? getRestingPosition(position) : position;
@@ -387,7 +393,11 @@ export function StoryCanvas({ position, reducedMotion, label }: { position: numb
             drawPortraitFade(timeline.activeIndex, timeline.lineProgress, timeline.transition);
         }
 
-        for (const image of allImages) image.addEventListener("load", refreshLuminance);
+        function render(now: number) {
+            frame = requestAnimationFrame(render);
+            draw(now);
+        }
+
         const resizeObserver = new ResizeObserver(resize);
         if (canvas.parentElement) resizeObserver.observe(canvas.parentElement);
         resize();
@@ -396,7 +406,6 @@ export function StoryCanvas({ position, reducedMotion, label }: { position: numb
         return () => {
             cancelAnimationFrame(frame);
             resizeObserver.disconnect();
-            for (const image of allImages) image.removeEventListener("load", refreshLuminance);
         };
     }, []);
 

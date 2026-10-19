@@ -468,7 +468,7 @@ html[data-story-finale] .view-toggle-item[data-view="detail"] {
 .story-stage {
     position: sticky;
     top: 0;
-    height: 100svh;
+    height: 100dvh;
     overflow: hidden;
 }
 
