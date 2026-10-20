@@ -468,7 +468,9 @@ html[data-story-finale] .view-toggle-item[data-view="detail"] {
 .story-stage {
     position: sticky;
     top: 0;
-    height: 100dvh;
+    /* 터치 중에는 dvh가 갱신되지 않아 하단이 비므로 최대 높이로 고정하고, 주소창에 가려지는 만큼 하단 UI를 올린다. */
+    --toolbar-overlap: calc(100lvh - 100svh);
+    height: 100lvh;
     overflow: hidden;
 }
 
@@ -524,7 +526,7 @@ html[data-story-finale] .view-toggle-item[data-view="detail"] {
 .story-copy {
     position: absolute;
     left: clamp(24px, 5vw, 72px);
-    bottom: clamp(56px, 9vh, 96px);
+    bottom: calc(clamp(56px, 9vh, 96px) + var(--toolbar-overlap));
     width: min(520px, calc(100% - 48px));
     pointer-events: auto;
     word-break: keep-all;
@@ -697,7 +699,7 @@ a.story-project-name:hover {
 
 .story-counter {
     right: 0;
-    bottom: 0;
+    bottom: var(--toolbar-overlap);
     padding: 6px 12px;
     border-width: 1px 0 0 1px;
     border-radius: 8px 0 0 0;
@@ -707,7 +709,7 @@ a.story-project-name:hover {
 .story-scroll-hint {
     position: absolute;
     left: 50%;
-    bottom: 20px;
+    bottom: calc(20px + var(--toolbar-overlap));
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
@@ -743,8 +745,13 @@ a.story-project-name:hover {
     .story-copy {
         left: 16px;
         right: 16px;
-        bottom: 44px;
+        bottom: calc(44px + var(--toolbar-overlap));
         width: auto;
+    }
+
+    .story-counter {
+        border-width: 1px 0 1px 1px;
+        border-radius: 8px 0 0 8px;
     }
 
     .story-panel {

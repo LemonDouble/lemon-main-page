@@ -181,7 +181,7 @@ export function StoryStage({
     }
 
     return (
-        <div ref={containerRef} className="story" style={{ height: `calc(${SCENE_COUNT * SCROLL_PX_PER_SCENE}px + 100dvh)` }}>
+        <div ref={containerRef} className="story" style={{ height: `calc(${SCENE_COUNT * SCROLL_PX_PER_SCENE}px + 100lvh)` }}>
             <div className="story-stage">
                 <div className="story-progress-bar" style={{ transform: `scaleX(${position / SCENE_COUNT})` }} />
 
