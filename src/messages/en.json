@@ -41,7 +41,7 @@
       },
       "contact": {
         "title": "Feel free to reach out",
-        "body": "All my projects and the tools I use are collected on one page under '{detail}' in the top right. If you have any questions, reach me on any channel below.",
+        "body": "You can find all my projects and the tools I use on my blog via '{detail}' in the top right. If you have any questions, reach me on any channel below.",
         "cta": "See all projects →"
       }
     },
@@ -59,46 +59,5 @@
       "claude-dashboard": "A web dashboard that shows Claude Code usage at a glance",
       "lemon-design-system": "A personal design system that helps AI agents produce consistent designs"
     }
-  },
-  "detail": {
-    "tagline": "I like building fun things.",
-    "highlights": {
-      "title": "Highlights",
-      "intro": "The projects I'm putting the most love into lately."
-    },
-    "tiers": {
-      "active": {
-        "title": "Running",
-        "intro": "Projects I'm still operating or developing."
-      },
-      "done": {
-        "title": "Finished",
-        "intro": "Projects that are done and in everyday use."
-      },
-      "archive": {
-        "title": "Archive",
-        "intro": "Study exercises, dropped ideas and older projects."
-      }
-    },
-    "viewOnBlog": "View on the blog →"
-  },
-  "projects": {
-    "private": "Private"
-  },
-  "skills": {
-    "intro": "These are the tools I use to build all sorts of things.",
-    "level": {
-      "primary": "🔥 Frequently",
-      "secondary": "🛠️ Occasional"
-    }
-  },
-  "status": {
-    "개발중": "In Development",
-    "완료": "Done",
-    "완료 (개인용)": "Done (Personal)",
-    "완료 (고도화 중)": "Done (Iterating)",
-    "운영중": "Active",
-    "archived": "archived",
-    "드랍": "Dropped"
   }
 }

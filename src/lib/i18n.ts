@@ -1,24 +1,17 @@
 import koMessages from "@/messages/ko.json";
 import enMessages from "@/messages/en.json";
-import jaMessages from "@/messages/ja.json";
-import zhCnMessages from "@/messages/zh-cn.json";
-import zhTwMessages from "@/messages/zh-tw.json";
 
-export const SUPPORTED_LOCALES = ["ko", "en", "ja", "zh-cn", "zh-tw"] as const;
-export const NON_DEFAULT_LOCALES = ["en", "ja", "zh-cn", "zh-tw"] as const;
+export const SUPPORTED_LOCALES = ["ko", "en"] as const;
+export const NON_DEFAULT_LOCALES = ["en"] as const;
 export const DEFAULT_LOCALE = "ko";
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
-export type View = "story" | "detail";
 
 export type Dictionary = typeof koMessages;
 
 const dictionaries: Record<Locale, Dictionary> = {
     ko: koMessages,
     en: enMessages,
-    ja: jaMessages,
-    "zh-cn": zhCnMessages,
-    "zh-tw": zhTwMessages,
 };
 
 export function getDictionary(locale: Locale): Dictionary {
@@ -29,35 +22,30 @@ export function isNonDefaultLocale(value: string): value is Locale {
     return (NON_DEFAULT_LOCALES as readonly string[]).includes(value);
 }
 
-export function localePath(locale: Locale, view: View): string {
-    const localePrefix = locale === DEFAULT_LOCALE ? "" : `/${locale}`;
-    const viewSuffix = view === "detail" ? "/detail" : "";
-    return localePrefix + viewSuffix || "/";
+export function localePath(locale: Locale): string {
+    return locale === DEFAULT_LOCALE ? "/" : `/${locale}`;
 }
 
 const OG_LOCALE: Record<Locale, string> = {
     ko: "ko_KR",
     en: "en_US",
-    ja: "ja_JP",
-    "zh-cn": "zh_CN",
-    "zh-tw": "zh_TW",
 };
 
 const SITE_URL = "https://lemondouble.com";
 
-export function getLocaleUrl(locale: Locale, view: View): string {
-    const path = localePath(locale, view);
+export function getLocaleUrl(locale: Locale): string {
+    const path = localePath(locale);
     return path === "/" ? SITE_URL : `${SITE_URL}${path}`;
 }
 
-export function getAlternates(locale: Locale, view: View) {
+export function getAlternates(locale: Locale) {
     const languages: Record<string, string> = {};
     for (const supportedLocale of SUPPORTED_LOCALES) {
-        languages[supportedLocale] = getLocaleUrl(supportedLocale, view);
+        languages[supportedLocale] = getLocaleUrl(supportedLocale);
     }
-    languages["x-default"] = getLocaleUrl(DEFAULT_LOCALE, view);
+    languages["x-default"] = getLocaleUrl(DEFAULT_LOCALE);
     return {
-        canonical: getLocaleUrl(locale, view),
+        canonical: getLocaleUrl(locale),
         languages,
     };
 }

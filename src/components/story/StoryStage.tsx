@@ -1,7 +1,6 @@
 "use client";
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties, type ReactNode, type RefObject } from "react";
 import { StoryCanvas } from "@/components/story/StoryCanvas";
 import { STORY_SCENES, type Scene } from "@/components/story/scenes";
@@ -88,14 +87,14 @@ function SceneView({
     index,
     state,
     dict,
-    detailPath,
+    projectsUrl,
     socialLinks,
 }: {
     scene: Scene;
     index: number;
     state: SceneState;
     dict: Dictionary;
-    detailPath: string;
+    projectsUrl: string;
     socialLinks: ReactNode;
 }) {
     const text = dict.story.scenes[scene.key];
@@ -141,9 +140,9 @@ function SceneView({
                     {scene.key === "contact" && (
                         <div className="mt-5 flex flex-col gap-4">
                             {socialLinks}
-                            <Link href={detailPath} className="story-cta">
+                            <a href={projectsUrl} target="_blank" rel="noopener noreferrer" className="story-cta">
                                 {dict.story.scenes.contact.cta}
-                            </Link>
+                            </a>
                         </div>
                     )}
                 </div>
@@ -154,11 +153,11 @@ function SceneView({
 
 export function StoryStage({
     dict,
-    detailPath,
+    projectsUrl,
     socialLinks,
 }: {
     dict: Dictionary;
-    detailPath: string;
+    projectsUrl: string;
     socialLinks: ReactNode;
 }) {
     const containerRef = useRef<HTMLDivElement | null>(null);
@@ -167,7 +166,7 @@ export function StoryStage({
     const timeline = getTimeline(position, reducedMotion);
     const isFinale = timeline.activeIndex === SCENE_COUNT - 1;
 
-    // 마지막 장면에서 헤더의 상세 페이지 버튼을 강조한다. 헤더는 이 컴포넌트 밖에 있다.
+    // 마지막 장면에서 헤더의 '자세히' 버튼을 강조한다. 헤더는 이 컴포넌트 밖에 있다.
     useEffect(() => {
         document.documentElement.toggleAttribute("data-story-finale", isFinale);
         return () => document.documentElement.removeAttribute("data-story-finale");
@@ -195,7 +194,7 @@ export function StoryStage({
                             index={index}
                             state={getSceneState(index, timeline)}
                             dict={dict}
-                            detailPath={detailPath}
+                            projectsUrl={projectsUrl}
                             socialLinks={socialLinks}
                         />
                     ))}

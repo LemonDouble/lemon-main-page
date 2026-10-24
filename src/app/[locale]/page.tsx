@@ -14,7 +14,7 @@ type Params = { locale: string };
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
     const { locale } = await params;
-    return isNonDefaultLocale(locale) ? buildMetadata(locale, "story") : {};
+    return isNonDefaultLocale(locale) ? buildMetadata(locale) : {};
 }
 
 export default async function LocaleStory({ params }: { params: Promise<Params> }) {

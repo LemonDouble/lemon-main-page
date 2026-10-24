@@ -1,8 +1,9 @@
 # lemon-main-page
 
 - [LemonDouble의 개인 소개 페이지](https://lemondouble.com)입니다.
-- Next.js와 Tailwind CSS로 스크롤 스토리와 프로젝트·기술 상세 화면을 제공합니다.
-- 데스크톱·모바일과 한국어·영어·일본어·중국어 간체·번체를 지원합니다.
+- Next.js와 Tailwind CSS로 스크롤 스토리 화면을 제공합니다.
+- 프로젝트·기술 목록은 [블로그 Projects 페이지](https://blog.lemondouble.com/projects/)에서 관리하고, 이 페이지에서는 링크로만 연결합니다.
+- 데스크톱·모바일과 한국어·영어를 지원합니다.
 
 ## 로컬 실행
 
@@ -11,7 +12,7 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-- [스토리 화면](http://localhost:3000)과 [상세 화면](http://localhost:3000/detail)을 확인합니다.
+- [스토리 화면](http://localhost:3000)을 확인합니다.
 - 배포 전에는 `pnpm lint`와 `pnpm build`를 실행합니다.
 
 ## 이미지 관리

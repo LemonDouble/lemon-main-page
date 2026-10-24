@@ -252,5 +252,3 @@ export const STORY_SCENES: Scene[] = [
         projects: [],
     },
 ];
-
-export const HIGHLIGHT_PROJECT_SLUGS: string[] = STORY_SCENES.flatMap(scene => scene.projects.map(project => project.id));
