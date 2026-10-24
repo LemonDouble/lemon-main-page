@@ -21,9 +21,9 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="view-toggle-item"
-                        data-view="detail"
+                        data-view="projects"
                     >
-                        {dict.nav.detail}
+                        {dict.nav.projects}
                     </a>
                 </nav>
                 <LanguageSwitcher current={locale} label={dict.languageSwitcher.label} />

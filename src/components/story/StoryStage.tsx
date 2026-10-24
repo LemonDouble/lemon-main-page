@@ -115,7 +115,7 @@ function SceneView({
                     className={index === 0 ? "story-heading story-heading-name" : "story-heading"}
                 />
                 <div className={`story-panel ${isTextShown ? "is-shown" : ""}`}>
-                    <p className="story-body">{text.body.replace("{detail}", dict.nav.detail)}</p>
+                    <p className="story-body">{text.body.replace("{projects}", dict.nav.projects)}</p>
 
                     {scene.projects.length > 0 && (
                         <ul className="story-projects">
@@ -166,7 +166,7 @@ export function StoryStage({
     const timeline = getTimeline(position, reducedMotion);
     const isFinale = timeline.activeIndex === SCENE_COUNT - 1;
 
-    // 마지막 장면에서 헤더의 '자세히' 버튼을 강조한다. 헤더는 이 컴포넌트 밖에 있다.
+    // 마지막 장면에서 헤더의 '프로젝트' 버튼을 강조한다. 헤더는 이 컴포넌트 밖에 있다.
     useEffect(() => {
         document.documentElement.toggleAttribute("data-story-finale", isFinale);
         return () => document.documentElement.removeAttribute("data-story-finale");

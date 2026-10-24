@@ -6,7 +6,7 @@
   "nav": {
     "label": "View mode",
     "story": "Story",
-    "detail": "Details"
+    "projects": "Projects"
   },
   "languageSwitcher": {
     "label": "Select language"
@@ -41,7 +41,7 @@
       },
       "contact": {
         "title": "Feel free to reach out",
-        "body": "You can find all my projects and the tools I use on my blog via '{detail}' in the top right. If you have any questions, reach me on any channel below.",
+        "body": "You can find all my projects and the tools I use on my blog via '{projects}' in the top right. If you have any questions, reach me on any channel below.",
         "cta": "See all projects →"
       }
     },

@@ -209,18 +209,18 @@ html, body {
     font-weight: 600;
 }
 
-html[data-story-finale] .view-toggle-item[data-view="detail"] {
+html[data-story-finale] .view-toggle-item[data-view="projects"] {
     color: var(--primary);
-    animation: detailToggleGlow 1.6s ease-in-out infinite;
+    animation: projectsToggleGlow 1.6s ease-in-out infinite;
 }
 
-@keyframes detailToggleGlow {
+@keyframes projectsToggleGlow {
     0%, 100% { box-shadow: 0 0 0 0 rgba(240, 185, 11, 0); }
     50% { box-shadow: 0 0 0 2px var(--primary-dim-border), 0 0 16px rgba(240, 185, 11, 0.6); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    html[data-story-finale] .view-toggle-item[data-view="detail"] {
+    html[data-story-finale] .view-toggle-item[data-view="projects"] {
         animation: none;
         box-shadow: 0 0 0 2px var(--primary-dim-border);
     }
