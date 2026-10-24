@@ -52,7 +52,7 @@ export async function DetailPage({ locale }: { locale: Locale }) {
                     <p className="section-label mb-3">Software Engineer</p>
                     <h1 className="name-title text-5xl md:text-7xl tracking-tight">LemonDouble</h1>
                     <p className="mt-4 text-lg md:text-xl font-light text-[var(--text-primary)]">{dict.detail.tagline}</p>
-                    <SocialLinks className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2" />
+                    <SocialLinks className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2" />
                 </section>
 
                 <ProjectGroups groups={groupProjects(projects, dict)} dict={dict} />
