@@ -1,7 +1,7 @@
 "use client";
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties, type ReactNode, type RefObject } from "react";
+import { Fragment, useEffect, useRef, useState, useSyncExternalStore, type CSSProperties, type ReactNode, type RefObject } from "react";
 import { StoryCanvas } from "@/components/story/StoryCanvas";
 import { STORY_SCENES, type Scene } from "@/components/story/scenes";
 import { SCENE_COUNT, SCROLL_PX_PER_SCENE, clamp01, getSceneState, getTimeline, type SceneState } from "@/components/story/timeline";
@@ -55,21 +55,29 @@ function usePrefersReducedMotion(): boolean {
 }
 
 function BloomText({ as: Tag, text, shown, className }: { as: "h1" | "h2"; text: string; shown: boolean; className: string }) {
-    const words = text.split(" ");
+    const lines = text.split("\n");
     let characterIndex = 0;
 
     return (
-        <Tag className={`bloom ${shown ? "is-shown" : ""} ${className}`} aria-label={text}>
-            {words.map((word, wordIndex) => (
-                <span key={wordIndex} className="bloom-word" aria-hidden="true">
-                    {Array.from(word).map((character, position) => (
-                        <span key={position} className="bloom-character" style={{ "--bloom-index": characterIndex++ } as CSSProperties}>
-                            {character}
-                        </span>
-                    ))}
-                    {wordIndex < words.length - 1 && " "}
-                </span>
-            ))}
+        <Tag className={`bloom ${shown ? "is-shown" : ""} ${className}`} aria-label={text.replaceAll("\n", " ")}>
+            {lines.map((line, lineIndex) => {
+                const words = line.split(" ");
+                return (
+                    <Fragment key={lineIndex}>
+                        {lineIndex > 0 && <br />}
+                        {words.map((word, wordIndex) => (
+                            <span key={wordIndex} className="bloom-word" aria-hidden="true">
+                                {Array.from(word).map((character, position) => (
+                                    <span key={position} className="bloom-character" style={{ "--bloom-index": characterIndex++ } as CSSProperties}>
+                                        {character}
+                                    </span>
+                                ))}
+                                {wordIndex < words.length - 1 && " "}
+                            </span>
+                        ))}
+                    </Fragment>
+                );
+            })}
         </Tag>
     );
 }
