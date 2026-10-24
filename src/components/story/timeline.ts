@@ -62,20 +62,22 @@ export function getSceneState(index: number, timeline: Timeline): SceneState {
     return { imageOpacity: 0, textOpacity: 0, lineProgress: index < activeIndex ? 1 : 0 };
 }
 
-// 스크롤이 멈췄을 때 그림이 자리 잡을 위치다. 컷이 겹친 중간 상태 대신 가장 가까운 온전한 컷을 보여 준다.
-export function getRestingPosition(position: number): number {
-    const sceneIndex = Math.min(Math.floor(position), SCENE_COUNT - 1);
-    const frameTiming = STORY_SCENES[sceneIndex].frameTiming;
-    const progressInScene = position - sceneIndex;
-    if (frameTiming?.length && progressInScene < DRAWING_SHARE) {
-        const progress = progressInScene / DRAWING_SHARE;
-        const nextIndex = frameTiming.findIndex(keyframe => keyframe.progress >= progress);
-        const to = frameTiming[nextIndex < 0 ? frameTiming.length - 1 : nextIndex];
-        const from = frameTiming[Math.max(0, nextIndex - 1)];
-        if (from.frame === to.frame) return position;
-        const nearest = progress - from.progress < to.progress - progress ? from : to;
-        return sceneIndex + nearest.progress * DRAWING_SHARE;
-    }
-    const restingPosition = Math.round(position * CUTS_PER_SCENE) / CUTS_PER_SCENE;
-    return Math.min(restingPosition, SCENE_COUNT - 0.001);
+export type ScrollDirection = 1 | -1;
+
+// 컷마다 그 컷이 온전히 보이기 시작하는 위치다.
+const CUT_POSITIONS = STORY_SCENES.flatMap((scene, sceneIndex) =>
+    scene.frames.map((_, frame) => {
+        const progress = scene.frameTiming?.find(keyframe => keyframe.frame === frame)?.progress ?? frame / Math.max(1, scene.frames.length - 1);
+        return sceneIndex + progress * DRAWING_SHARE;
+    }),
+);
+// 스크롤 위치는 정수 px로 맞춰지므로 1px 차이는 같은 위치로 본다.
+const CUT_POSITION_TOLERANCE = 1 / SCROLL_PX_PER_SCENE;
+
+// 스크롤이 멈췄을 때 맞출 위치다. 조금이라도 스크롤했다면 그 방향의 다음 컷으로 넘긴다.
+export function getRestingPosition(position: number, direction: ScrollDirection): number {
+    const resting = direction > 0
+        ? CUT_POSITIONS.find(cutPosition => cutPosition >= position - CUT_POSITION_TOLERANCE)
+        : [...CUT_POSITIONS].reverse().find(cutPosition => cutPosition <= position + CUT_POSITION_TOLERANCE);
+    return resting ?? position;
 }

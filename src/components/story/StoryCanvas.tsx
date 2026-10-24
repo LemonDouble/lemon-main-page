@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { STORY_SCENES, type Scene } from "@/components/story/scenes";
-import { getFramePosition, getRestingPosition, getTimeline } from "@/components/story/timeline";
+import { getFramePosition, getTimeline } from "@/components/story/timeline";
 
 const CELL_SIZE = 14;
 const DISSOLVE_BAND = 0.2;
@@ -17,9 +17,7 @@ const SPARKLE_LIFETIME_MS = 1600;
 const SPARKLE_MIN_LUMINANCE = 0.55;
 // 색을 유지하는 원의 반지름(그림 너비 기준)이다.
 const ACCENT_RADIUS = 0.06;
-// 스크롤이 이만큼 멈춰 있으면 그림을 가장 가까운 컷으로 맞춘다.
-const SETTLE_DELAY_MS = 150;
-const SETTLE_EASING_MS = 90;
+const POSITION_EASING_MS = 90;
 
 interface Grid {
     columns: number;
@@ -108,10 +106,10 @@ function glyphFor(luminance: number): string {
 export function StoryCanvas({ position, reducedMotion, label }: { position: number; reducedMotion: boolean; label: string }) {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const accentCanvasRef = useRef<HTMLCanvasElement | null>(null);
-    const stateRef = useRef({ position, reducedMotion, positionChangedAt: 0 });
+    const stateRef = useRef({ position, reducedMotion });
 
     useEffect(() => {
-        stateRef.current = { position, reducedMotion, positionChangedAt: performance.now() };
+        stateRef.current = { position, reducedMotion };
     }, [position, reducedMotion]);
 
     useEffect(() => {
@@ -351,12 +349,10 @@ export function StoryCanvas({ position, reducedMotion, label }: { position: numb
         }
 
         function draw(now: number) {
-            const { position, reducedMotion, positionChangedAt } = stateRef.current;
-            const isSettled = now - positionChangedAt > SETTLE_DELAY_MS;
-            const targetPosition = isSettled ? getRestingPosition(position) : position;
+            const { position, reducedMotion } = stateRef.current;
             displayedPosition = reducedMotion
                 ? position
-                : lerp(displayedPosition, targetPosition, 1 - Math.exp(-(now - lastFrameAt) / SETTLE_EASING_MS));
+                : lerp(displayedPosition, position, 1 - Math.exp(-(now - lastFrameAt) / POSITION_EASING_MS));
             lastFrameAt = now;
             const timeline = getTimeline(displayedPosition, reducedMotion);
             const activeScene = STORY_SCENES[timeline.activeIndex];

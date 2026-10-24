@@ -4,10 +4,11 @@ import { SiGithub } from "@icons-pack/react-simple-icons";
 import { Fragment, useEffect, useRef, useState, useSyncExternalStore, type CSSProperties, type ReactNode, type RefObject } from "react";
 import { StoryCanvas } from "@/components/story/StoryCanvas";
 import { STORY_SCENES, type Scene } from "@/components/story/scenes";
-import { SCENE_COUNT, SCROLL_PX_PER_SCENE, clamp01, getSceneState, getTimeline, type SceneState } from "@/components/story/timeline";
+import { SCENE_COUNT, SCROLL_PX_PER_SCENE, clamp01, getRestingPosition, getSceneState, getTimeline, type SceneState, type ScrollDirection } from "@/components/story/timeline";
 import type { Dictionary } from "@/lib/i18n";
 
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+const SNAP_DELAY_MS = 150;
 
 function useStoryPosition(containerRef: RefObject<HTMLDivElement | null>): number {
     const [position, setPosition] = useState(0);
@@ -38,6 +39,60 @@ function useStoryPosition(containerRef: RefObject<HTMLDivElement | null>): numbe
     }, [containerRef]);
 
     return position;
+}
+
+// 스크롤이 멈추면 스크롤하던 방향의 다음 컷 위치로 페이지를 맞춘다. 터치 중에는 손가락을 뗄 때까지 기다린다.
+function useCutSnapping(containerRef: RefObject<HTMLDivElement | null>, reducedMotion: boolean) {
+    useEffect(() => {
+        if (reducedMotion) return;
+        let lastScrollY = window.scrollY;
+        let direction: ScrollDirection = 1;
+        let isTouching = false;
+        let timer = 0;
+
+        function snap() {
+            const container = containerRef.current;
+            if (!container || isTouching) return;
+            const containerTop = container.getBoundingClientRect().top + window.scrollY;
+            const position = (window.scrollY - containerTop) / SCROLL_PX_PER_SCENE;
+            if (position < 0 || position >= SCENE_COUNT) return;
+            const top = containerTop + getRestingPosition(position, direction) * SCROLL_PX_PER_SCENE;
+            if (Math.abs(top - window.scrollY) >= 1) window.scrollTo({ top, behavior: "smooth" });
+        }
+
+        function scheduleSnap() {
+            clearTimeout(timer);
+            timer = window.setTimeout(snap, SNAP_DELAY_MS);
+        }
+
+        function onScroll() {
+            if (window.scrollY !== lastScrollY) direction = window.scrollY > lastScrollY ? 1 : -1;
+            lastScrollY = window.scrollY;
+            scheduleSnap();
+        }
+
+        function onTouchStart() {
+            isTouching = true;
+            clearTimeout(timer);
+        }
+
+        function onTouchEnd() {
+            isTouching = false;
+            scheduleSnap();
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("touchstart", onTouchStart, { passive: true });
+        window.addEventListener("touchend", onTouchEnd, { passive: true });
+        window.addEventListener("touchcancel", onTouchEnd, { passive: true });
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener("scroll", onScroll);
+            window.removeEventListener("touchstart", onTouchStart);
+            window.removeEventListener("touchend", onTouchEnd);
+            window.removeEventListener("touchcancel", onTouchEnd);
+        };
+    }, [containerRef, reducedMotion]);
 }
 
 function subscribeReducedMotion(onChange: () => void) {
@@ -171,6 +226,7 @@ export function StoryStage({
     const containerRef = useRef<HTMLDivElement | null>(null);
     const position = useStoryPosition(containerRef);
     const reducedMotion = usePrefersReducedMotion();
+    useCutSnapping(containerRef, reducedMotion);
     const timeline = getTimeline(position, reducedMotion);
     const isFinale = timeline.activeIndex === SCENE_COUNT - 1;
 
