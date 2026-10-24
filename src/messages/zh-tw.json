@@ -88,9 +88,8 @@
   "skills": {
     "intro": "用這些技術做著各種各樣的東西。",
     "level": {
-      "primary": "🔥 主力",
-      "secondary": "🛠️ 偶爾使用",
-      "familiar": "📚 略懂"
+      "primary": "🔥 常用",
+      "secondary": "🛠️ 偶爾使用"
     }
   },
   "status": {

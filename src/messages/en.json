@@ -88,9 +88,8 @@
   "skills": {
     "intro": "These are the tools I use to build all sorts of things.",
     "level": {
-      "primary": "🔥 Primary",
-      "secondary": "🛠️ Occasional",
-      "familiar": "📚 Familiar"
+      "primary": "🔥 Frequently",
+      "secondary": "🛠️ Occasional"
     }
   },
   "status": {

@@ -88,9 +88,8 @@
   "skills": {
     "intro": "이런 기술들을 사용해서 이런저런 걸 만들고 있어요.",
     "level": {
-      "primary": "🔥 주력",
-      "secondary": "🛠️ 가끔씩 써요",
-      "familiar": "📚 할 줄은 알아요"
+      "primary": "🔥 자주 써요",
+      "secondary": "🛠️ 가끔씩 써요"
     }
   },
   "status": {

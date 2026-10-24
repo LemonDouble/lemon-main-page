@@ -21,7 +21,7 @@ export interface Skill {
     category_order: number;
     category_slug: string;
     color: string;
-    level: "primary" | "secondary" | "familiar";
+    level: "primary" | "secondary";
     logo: string;
     logo_color: "white" | "black";
     name: string;

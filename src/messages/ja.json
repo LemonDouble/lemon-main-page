@@ -88,9 +88,8 @@
   "skills": {
     "intro": "こんな技術を使って色々作っています。",
     "level": {
-      "primary": "🔥 メイン",
-      "secondary": "🛠️ たまに使う",
-      "familiar": "📚 触ったことあり"
+      "primary": "🔥 よく使う",
+      "secondary": "🛠️ たまに使う"
     }
   },
   "status": {

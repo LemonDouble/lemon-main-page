@@ -2,21 +2,14 @@ import Link from "next/link";
 import type { Skill } from "@/lib/blog";
 import type { Dictionary } from "@/lib/i18n";
 
-const LEVELS: Skill["level"][] = ["primary", "secondary", "familiar"];
+const LEVELS: Skill["level"][] = ["primary", "secondary"];
 
 function SkillBadge({ skill }: { skill: Skill }) {
-    const iconSrc = skill.custom_logo
-        ? skill.custom_logo
-        : `https://cdn.simpleicons.org/${skill.logo}/${skill.logo_color}`;
+    const iconSrc = skill.custom_logo || `https://cdn.simpleicons.org/${skill.logo}`;
 
     return (
-        <span
-            className="skill-badge"
-            style={{ ["--badge-color" as string]: `#${skill.color}` }}
-            title={skill.note}
-        >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={iconSrc} alt="" width={14} height={14} loading="lazy" />
+        <span className={`skill-badge skill-badge--${skill.level}`} title={skill.note}>
+            <span className="skill-icon" style={{ ["--icon" as string]: `url("${iconSrc}")` }} />
             <span>{skill.name}</span>
         </span>
     );
@@ -38,7 +31,7 @@ export function SkillsSection({ skills, dict, blogSkillsUrl }: { skills: Skill[]
             bucket = {
                 order: skill.category_order,
                 name: skill.category,
-                byLevel: { primary: [], secondary: [], familiar: [] },
+                byLevel: { primary: [], secondary: [] },
             };
             categoryMap.set(skill.category_slug, bucket);
         }
@@ -66,7 +59,6 @@ export function SkillsSection({ skills, dict, blogSkillsUrl }: { skills: Skill[]
                 <table className="skills-table">
                     <colgroup>
                         <col className="col-category" />
-                        <col className="col-level" />
                         <col className="col-level" />
                         <col className="col-level" />
                     </colgroup>

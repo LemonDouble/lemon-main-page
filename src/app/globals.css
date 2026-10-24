@@ -179,7 +179,7 @@ html, body {
 }
 
 .skills-table .col-level {
-    width: calc((100% - 110px) / 3);
+    width: calc((100% - 110px) / 2);
 }
 
 .skills-table th {
@@ -236,8 +236,8 @@ html, body {
     font-size: 12px;
     font-weight: 600;
     color: var(--text-primary);
-    background: color-mix(in srgb, var(--badge-color) 15%, transparent);
-    border: 1px solid color-mix(in srgb, var(--badge-color) 30%, transparent);
+    background: var(--border);
+    border: 1px solid var(--border-hover);
     line-height: 1;
     white-space: nowrap;
     min-width: 72px;
@@ -245,16 +245,22 @@ html, body {
 }
 
 .skill-badge:hover {
-    background: color-mix(in srgb, var(--badge-color) 25%, transparent);
-    border-color: color-mix(in srgb, var(--badge-color) 50%, transparent);
+    border-color: var(--primary-dim-border);
 }
 
-.skill-badge img {
+/* 아이콘을 mask로 써서, 브랜드 색 대신 단계별 색(자주: 금색, 가끔: 회색)으로 칠한다. */
+.skill-icon {
     display: block;
     width: 14px;
     height: 14px;
     flex-shrink: 0;
-    filter: drop-shadow(0 0 0.5px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 0.5px rgba(255, 255, 255, 0.4));
+    background: var(--primary);
+    -webkit-mask: var(--icon) center / contain no-repeat;
+    mask: var(--icon) center / contain no-repeat;
+}
+
+.skill-badge--secondary .skill-icon {
+    background: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
