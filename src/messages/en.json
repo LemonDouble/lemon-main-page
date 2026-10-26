@@ -4,62 +4,93 @@
     "description": "LemonDouble's portfolio / main page"
   },
   "nav": {
-    "label": "View mode",
-    "story": "Story",
     "projects": "Projects"
   },
   "languageSwitcher": {
     "label": "Select language"
   },
-  "story": {
-    "scrollHint": "Scroll to follow along",
-    "characterAlt": "A silver-haired character wearing a witch hat",
-    "scenes": {
-      "intro": {
-        "title": "LemonDouble",
-        "body": "I love building fun things.\nFrom servers and smart homes to AI, web services, hardware and games, here's what I've been making."
-      },
-      "homelab": {
-        "title": "A tiny datacenter at home",
-        "body": "I run a Kubernetes cluster on mini PCs and a GPU workstation.\nThe services I build and everyday ones like photo backups and a social network all run on it."
-      },
-      "smarthome": {
-        "title": "Running my home with code",
-        "body": "Every device in my home is connected and managed through Home Assistant.\nWhen a device or service has no official integration, I write one myself."
-      },
-      "mlai": {
-        "title": "From models to services",
-        "body": "I refine models myself, like speech synthesis and manga translation, and turn them into services I actually use.\nThese days I also spend a lot of time working alongside AI agents."
-      },
-      "web": {
-        "title": "One login for everything",
-        "body": "When I need a web service, I build it myself.\nIt's a hobby server, but it supports TOTP and Passkeys, and one login gets you into everything from a manga translator to a quote search."
-      },
-      "hardware": {
-        "title": "Things you can touch and move",
-        "body": "Beyond software on a screen, I also build things you can hold and that actually move.\nI design the circuits and PCBs, make the cases with CAD and a 3D printer, and have built a wireless macropad and a weapon from a game."
-      },
-      "game": {
-        "title": "Making my own game",
-        "body": "I'm building a bullet-hell action roguelite in Godot.\nFrom the world and characters to the maps, I'm filling it in piece by piece."
-      },
-      "contact": {
-        "title": "Have a question?\nFeel free to reach out",
-        "body": "You can find all my projects and the tools I use on my blog via '{projects}' in the top right. If you have any questions, reach me on any channel below.",
-        "cta": "See all projects →"
-      }
+  "hero": {
+    "greeting": "Hi there! My name is..",
+    "tagline": "A developer who loves building fun things.",
+    "body": "From servers and smart homes to AI, web services, hardware and games, here's what I've been making.",
+    "bannerAlt": "A silver-haired character wearing a witch hat"
+  },
+  "fieldsSection": {
+    "title": "What I'm building"
+  },
+  "fields": {
+    "homelab": {
+      "label": "Homelab·Infra",
+      "title": "A tiny datacenter at home",
+      "body": "I run a Kubernetes cluster on mini PCs and a GPU workstation. The services I build and everyday ones like photo backups and a social network all run on it."
     },
-    "projects": {
-      "lemon-k8s-cluster": "A K3S homelab cluster on a mini PC and a GPU workstation",
-      "misskey": "A microblogging social network instance I run myself",
-      "kepco-powerplanner-ha-addon": "An add-on that brings KEPCO PowerPlanner electricity usage into Home Assistant",
-      "hass-kakao-map-changer": "An integration that swaps the Home Assistant map for Kakao Map",
-      "lemon-tts": "A Home Assistant integration that speaks Japanese from any input language",
-      "hayakoe": "A Japanese TTS library polished to be easy to use",
-      "lemon-manga-translator": "A pipeline that finds text in Japanese manga, translates it into Korean and redraws it",
-      "claude-dashboard": "A web dashboard that shows Claude Code usage at a glance",
-      "geardrak": "A 16-key wireless macropad I built myself, from circuit to case",
-      "supernova": "A 3D-printed display prop of Aris's Supernova from Blue Archive"
+    "smarthome": {
+      "label": "Smart Home",
+      "title": "Running my home with code",
+      "body": "Every device in my home is connected and managed through Home Assistant. When a device or service has no official integration, I write one myself."
+    },
+    "mlai": {
+      "label": "ML·AI",
+      "title": "From models to services",
+      "body": "I refine models myself, like speech synthesis and manga translation, and turn them into services I actually use. These days I also spend a lot of time working alongside AI agents."
+    },
+    "web": {
+      "label": "Web Services",
+      "title": "One login for everything",
+      "body": "When I need a web service, I build it myself. It's a hobby server, but it supports TOTP and Passkeys, and one login gets you into everything from a manga translator to a quote search."
+    },
+    "hardware": {
+      "label": "Hardware",
+      "title": "Things you can touch and move",
+      "body": "I design the circuits and PCBs, make the cases with CAD and a 3D printer, and have built a wireless macropad and a weapon from a game."
+    },
+    "game": {
+      "label": "Game Dev",
+      "title": "Making my own game",
+      "body": "I'm building a bullet-hell action roguelite in Godot. From the world and characters to the maps, I'm filling it in piece by piece."
     }
+  },
+  "projects": {
+    "lemon-k8s-cluster": "A K3S homelab cluster on a mini PC and a GPU workstation",
+    "misskey": "A microblogging social network instance I run myself",
+    "kepco-powerplanner-ha-addon": "An add-on that brings KEPCO PowerPlanner electricity usage into Home Assistant",
+    "hass-kakao-map-changer": "An integration that swaps the Home Assistant map for Kakao Map",
+    "lemon-tts": "A Home Assistant integration that speaks Japanese from any input language",
+    "hayakoe": "A Japanese TTS library polished to be easy to use",
+    "lemon-manga-translator": "A pipeline that finds text in Japanese manga, translates it into Korean and redraws it",
+    "claude-dashboard": "A web dashboard that shows Claude Code usage at a glance",
+    "geardrak": "A 16-key wireless macropad I built myself, from circuit to case",
+    "supernova": "A 3D-printed display prop of Aris's Supernova from Blue Archive"
+  },
+  "techStack": {
+    "title": "Tech Stack",
+    "categories": {
+      "language": "Languages",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "infra": "Infra",
+      "database": "DB",
+      "mlai": "ML & AI",
+      "iot": "IoT",
+      "tools": "Tools"
+    }
+  },
+  "openSource": {
+    "title": "Open Source",
+    "contributions": {
+      "rustfs": "Split the Helm chart storage size into separate data/log parameters",
+      "doks": "Fixed compatibility with newer Hugo versions",
+      "kubeseal-webgui": "Bumped the Helm chart image to fix a clipboard copy bug",
+      "opensearch-helm-charts": "Fixed a security plugin conflict in opensearch.yml",
+      "minio-operator": "Fixed existingSecret YAML indentation"
+    }
+  },
+  "certifications": {
+    "title": "Certifications"
+  },
+  "contact": {
+    "title": "Have a question? Feel free to reach out",
+    "body": "You can find more about my projects and the tools I use on my blog.",
+    "cta": "See all projects"
   }
 }

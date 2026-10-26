@@ -4,62 +4,93 @@
     "description": "레몬더블의 포트폴리오 / 메인 페이지"
   },
   "nav": {
-    "label": "보기 방식",
-    "story": "스토리",
     "projects": "프로젝트"
   },
   "languageSwitcher": {
     "label": "언어 선택"
   },
-  "story": {
-    "scrollHint": "스크롤해서 따라오세요",
-    "characterAlt": "은발에 마녀 모자를 쓴 캐릭터",
-    "scenes": {
-      "intro": {
-        "title": "LemonDouble",
-        "body": "재밌는 걸 만드는 걸 좋아해요.\n서버와 스마트홈부터 AI, 웹 서비스, 하드웨어, 게임까지, 제가 만들고 있는 것들을 소개할게요."
-      },
-      "homelab": {
-        "title": "집 안의 작은 데이터센터",
-        "body": "미니PC와 GPU 워크스테이션으로 쿠버네티스 클러스터를 운영해요.\n제가 만든 서비스들도, 사진 백업과 SNS 같은 일상 서비스도 모두 이 클러스터에서 돌아가요."
-      },
-      "smarthome": {
-        "title": "집을 코드로 움직이기",
-        "body": "집 안의 기기들을 Home Assistant 하나로 연결해서 관리해요.\n공식 연동이 없는 기기나 서비스는 연동을 직접 만들어서 써요."
-      },
-      "mlai": {
-        "title": "모델을 서비스로",
-        "body": "음성 합성이나 만화 번역처럼 직접 모델을 다듬어서 실제로 쓰는 서비스로 만들어요.\n요즘은 AI 에이전트와 함께 일하는 시간도 많아요."
-      },
-      "web": {
-        "title": "한 번의 로그인으로",
-        "body": "필요한 웹 서비스는 직접 만들어서 써요.\n취미로 운영하는 서버지만 TOTP와 Passkey까지 지원하고, 한 번 로그인하면 만화 번역기, 대사 검색 같은 여러 서비스를 바로 쓸 수 있어요."
-      },
-      "hardware": {
-        "title": "만지고, 움직이는 것들",
-        "body": "화면 속 소프트웨어만이 아니라, 손으로 만지고 실제로 움직이는 것도 만들어요.\n회로와 PCB를 직접 설계하고 CAD와 3D 프린터로 케이스를 만들어서, 무선 매크로패드와 게임 속 무기를 만들어봤어요."
-      },
-      "game": {
-        "title": "직접 만드는 게임",
-        "body": "Godot으로 탄막 액션 로그라이트 게임을 만들고 있어요.\n세계관과 캐릭터 설정부터 맵 제작까지 하나씩 직접 채워 가고 있어요."
-      },
-      "contact": {
-        "title": "궁금한 게 있다면\n편하게 연락 주세요",
-        "body": "지금까지 만든 프로젝트와 사용하는 기술은 오른쪽 위의 '{projects}'를 누르면 블로그에서 볼 수 있어요.\n궁금한 게 있으면 아래 채널 어디로든 연락 주세요.",
-        "cta": "전체 프로젝트 보기 →"
-      }
+  "hero": {
+    "greeting": "안녕하세요! 제 이름은..",
+    "tagline": "재밌는 걸 만드는 걸 좋아하는 개발자예요.",
+    "body": "서버와 스마트홈부터 AI, 웹 서비스, 하드웨어, 게임까지, 제가 만들고 있는 것들을 소개할게요.",
+    "bannerAlt": "마녀 모자를 쓴 은발 캐릭터"
+  },
+  "fieldsSection": {
+    "title": "만들고 있는 것들"
+  },
+  "fields": {
+    "homelab": {
+      "label": "홈랩·인프라",
+      "title": "집 안의 작은 데이터센터",
+      "body": "미니PC와 GPU 워크스테이션으로 쿠버네티스 클러스터를 운영해요. 제가 만든 서비스들도, 사진 백업과 SNS 같은 일상 서비스도 모두 이 클러스터에서 돌아가요."
     },
-    "projects": {
-      "lemon-k8s-cluster": "미니PC와 GPU 워크스테이션으로 구성한 K3S 홈랩 클러스터",
-      "misskey": "직접 운영하는 마이크로블로깅 SNS 인스턴스",
-      "kepco-powerplanner-ha-addon": "한전 파워플래너의 전기 사용량을 Home Assistant로 가져오는 애드온",
-      "hass-kakao-map-changer": "Home Assistant 지도를 카카오맵으로 바꿔 주는 통합",
-      "lemon-tts": "어떤 언어로 입력해도 일본어로 말해 주는 Home Assistant 통합",
-      "hayakoe": "쓰기 편하게 다듬은 일본어 TTS 라이브러리",
-      "lemon-manga-translator": "일본어 만화의 글자를 찾아 한국어로 번역해서 다시 그려 주는 파이프라인",
-      "claude-dashboard": "Claude Code 사용량을 한눈에 보는 웹 대시보드",
-      "geardrak": "회로부터 케이스까지 직접 만든 16키 무선 매크로패드",
-      "supernova": "블루 아카이브 아리스의 슈퍼노바를 3D 프린팅으로 만든 전시 소품"
+    "smarthome": {
+      "label": "스마트홈",
+      "title": "집을 코드로 움직이기",
+      "body": "집 안의 기기들을 Home Assistant 하나로 연결해서 관리해요. 공식 연동이 없는 기기나 서비스는 연동을 직접 만들어서 써요."
+    },
+    "mlai": {
+      "label": "ML·AI",
+      "title": "모델을 서비스로",
+      "body": "음성 합성이나 만화 번역처럼 직접 모델을 다듬어서 실제로 쓰는 서비스로 만들어요. 요즘은 AI 에이전트와 함께 일하는 시간도 많아요."
+    },
+    "web": {
+      "label": "통합 웹 서비스",
+      "title": "한 번의 로그인으로",
+      "body": "필요한 웹 서비스는 직접 만들어서 써요. 취미로 운영하는 서버지만 TOTP와 Passkey까지 지원하고, 한 번 로그인하면 만화 번역기, 대사 검색 같은 여러 서비스를 바로 쓸 수 있어요."
+    },
+    "hardware": {
+      "label": "하드웨어",
+      "title": "만지고, 움직이는 것들",
+      "body": "회로와 PCB를 직접 설계하고 CAD와 3D 프린터로 케이스를 만들어서, 무선 매크로패드와 게임 속 무기를 만들어봤어요."
+    },
+    "game": {
+      "label": "게임 제작",
+      "title": "직접 만드는 게임",
+      "body": "Godot으로 탄막 액션 로그라이트 게임을 만들고 있어요. 세계관과 캐릭터 설정부터 맵 제작까지 하나씩 직접 채워 가고 있어요."
     }
+  },
+  "projects": {
+    "lemon-k8s-cluster": "미니PC와 GPU 워크스테이션으로 구성한 K3S 홈랩 클러스터",
+    "misskey": "직접 운영하는 마이크로블로깅 SNS 인스턴스",
+    "kepco-powerplanner-ha-addon": "한전 파워플래너의 전기 사용량을 Home Assistant로 가져오는 애드온",
+    "hass-kakao-map-changer": "Home Assistant 지도를 카카오맵으로 바꿔 주는 통합",
+    "lemon-tts": "어떤 언어로 입력해도 일본어로 말해 주는 Home Assistant 통합",
+    "hayakoe": "쓰기 편하게 다듬은 일본어 TTS 라이브러리",
+    "lemon-manga-translator": "일본어 만화의 글자를 찾아 한국어로 번역해서 다시 그려 주는 파이프라인",
+    "claude-dashboard": "Claude Code 사용량을 한눈에 보는 웹 대시보드",
+    "geardrak": "회로부터 케이스까지 직접 만든 16키 무선 매크로패드",
+    "supernova": "블루 아카이브 아리스의 슈퍼노바를 3D 프린팅으로 만든 전시 소품"
+  },
+  "techStack": {
+    "title": "기술 스택",
+    "categories": {
+      "language": "언어",
+      "backend": "백엔드",
+      "frontend": "프론트엔드",
+      "infra": "인프라",
+      "database": "DB",
+      "mlai": "ML & AI",
+      "iot": "IoT",
+      "tools": "도구"
+    }
+  },
+  "openSource": {
+    "title": "오픈소스 기여",
+    "contributions": {
+      "rustfs": "Helm chart의 저장소 크기를 data/log 별도 파라미터로 분리",
+      "doks": "Hugo 버전 업그레이드 호환성 수정",
+      "kubeseal-webgui": "Helm chart 이미지를 올려 클립보드 복사 버그 해결",
+      "opensearch-helm-charts": "opensearch.yml의 security plugin 설정 충돌 수정",
+      "minio-operator": "existingSecret YAML 들여쓰기 수정"
+    }
+  },
+  "certifications": {
+    "title": "자격증"
+  },
+  "contact": {
+    "title": "궁금한 게 있다면 편하게 연락 주세요",
+    "body": "지금까지 만든 프로젝트와 사용하는 기술은 블로그에서 더 자세히 볼 수 있어요.",
+    "cta": "전체 프로젝트 보기"
   }
 }

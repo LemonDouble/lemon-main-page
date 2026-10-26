@@ -12,20 +12,9 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                 LemonDouble
             </Link>
             <div className="flex items-center gap-2">
-                <nav aria-label={dict.nav.label} className="view-toggle">
-                    <Link href={localePath(locale)} className="view-toggle-item active" aria-current="page">
-                        {dict.nav.story}
-                    </Link>
-                    <a
-                        href={blogUrl(locale, "/projects/")}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="view-toggle-item"
-                        data-view="projects"
-                    >
-                        {dict.nav.projects}
-                    </a>
-                </nav>
+                <a href={blogUrl(locale, "/projects/")} target="_blank" rel="noopener noreferrer" className="header-link">
+                    {dict.nav.projects}
+                </a>
                 <LanguageSwitcher current={locale} label={dict.languageSwitcher.label} />
             </div>
         </header>
